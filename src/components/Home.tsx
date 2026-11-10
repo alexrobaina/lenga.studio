@@ -1,5 +1,5 @@
 import { dictionaries, type Lang } from "@/content/dictionaries";
-import { site } from "@/content/site";
+import { structuredData } from "@/lib/structuredData";
 import WatercolorDefs from "./WatercolorDefs";
 import Header from "./Header";
 import Opening from "./Opening";
@@ -14,17 +14,7 @@ import FloatingWhatsApp from "./FloatingWhatsApp";
 
 export default function Home({ lang }: { lang: Lang }) {
   const t = dictionaries[lang];
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: site.name,
-    description: t.meta.description,
-    url: site.url,
-    image: `${site.url}/og.jpg`,
-    email: site.email,
-    areaServed: ["El Chaltén, Santa Cruz, Argentina", "Mendoza, Argentina"],
-    telephone: `+${site.whatsapp}`,
-  };
+  const jsonLd = structuredData(lang);
   return (
     <>
       <WatercolorDefs />
@@ -41,7 +31,7 @@ export default function Home({ lang }: { lang: Lang }) {
       <Footer t={t} />
       <FloatingWhatsApp label="WhatsApp" message={t.contact.whatsappMessage} />
       <div className="grain" aria-hidden="true" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     </>
   );
 }

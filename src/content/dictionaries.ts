@@ -3,9 +3,10 @@ export type Lang = "es" | "en";
 const es = {
   lang: "es" as Lang,
   meta: {
-    title: "Lenga Studio · Fotografía, diseño, web y redes en El Chaltén",
+    title: "Fotógrafos en El Chaltén · Fotos, web y redes | Lenga Studio",
     description:
-      "Fotógrafos de montaña en El Chaltén, Patagonia. También hacemos la web, el diseño y las redes de tu negocio.",
+      "Fotógrafos de montaña en El Chaltén, Patagonia. Fotos para restaurantes, hosterías y agencias de trekking, más web, diseño y redes en español e inglés.",
+    ogAlt: "Atardecer sobre el cordón del Torre desde el glaciar, El Chaltén · Lenga Studio",
   },
   nav: {
     services: "Paquetes",
@@ -22,7 +23,7 @@ const es = {
   },
   hero: {
     eyebrow: "Fotografía · Diseño · Web · Redes — El Chaltén",
-    line1: "Somos fotógrafos de montaña.",
+    line1: "Fotógrafos de montaña en El Chaltén.",
     line2: "También hacemos la web, el diseño y las redes de tu negocio.",
     sub: "Mountain photographers in El Chaltén — and the website, design and social media for your business.",
     primary: "Escribinos por WhatsApp",
@@ -85,7 +86,7 @@ const es = {
   work: {
     eyebrow: "Trabajos",
     chalten: {
-      line1: "Montaña ·",
+      line1: "Fotografía de montaña ·",
       line2: "El Chaltén",
       text: "Campamento sobre el glaciar frente al Torre, refugio, cruces técnicos y nevadas. La serie principal del estudio.",
       drag: "Seguí bajando para recorrer la serie",
@@ -198,9 +199,10 @@ export type Dict = typeof es;
 const en: Dict = {
   lang: "en",
   meta: {
-    title: "Lenga Studio · Photography, design, web and social media in El Chaltén",
+    title: "Photographers in El Chaltén: photos, web, social | Lenga Studio",
     description:
-      "Mountain photographers in El Chaltén, Patagonia — and the website, design and social media for your business.",
+      "Mountain photographers in El Chaltén, Patagonia. Photos for restaurants, lodges and trekking agencies, plus websites, design and social media in Spanish and English.",
+    ogAlt: "Sunset over the Torre range from the glacier, El Chaltén · Lenga Studio",
   },
   nav: {
     services: "Packages",
@@ -217,7 +219,7 @@ const en: Dict = {
   },
   hero: {
     eyebrow: "Photography · Design · Web · Social — El Chaltén",
-    line1: "We are mountain photographers.",
+    line1: "Mountain photographers in El Chaltén.",
     line2: "We also make the website, design and social media for your business.",
     sub: "Fotógrafos de montaña en El Chaltén — y la web, el diseño y las redes de tu negocio.",
     primary: "Message us on WhatsApp",
@@ -280,7 +282,7 @@ const en: Dict = {
   work: {
     eyebrow: "Work",
     chalten: {
-      line1: "Mountains ·",
+      line1: "Mountain photography ·",
       line2: "El Chaltén",
       text: "Camping on the glacier facing the Torre, the refugio, technical crossings and snowfall. The studio's main series.",
       drag: "Keep scrolling to walk the series",

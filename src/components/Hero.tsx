@@ -43,8 +43,10 @@ function Layer({ progress, px, py, depth, drop, pointer, delay, still, ready, cl
     >
       <motion.div
         className="hero-layer-inner"
-        initial={still ? false : { opacity: 0, y: 40 + depth * 2 }}
-        animate={ready || still ? { opacity: 1, y: 0 } : undefined}
+        // Solo sube (sin desvanecer): la capa se ve desde el primer cuadro, aun antes de que cargue el JS.
+        // Así el navegador (y Google) la cuentan como contenido visible enseguida (mejor LCP en celular).
+        initial={still ? false : { y: 40 + depth * 2 }}
+        animate={ready || still ? { y: 0 } : undefined}
         transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.div className="hero-layer-inner" style={still ? undefined : { x, y: yp }}>
@@ -107,8 +109,8 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
           <motion.div className="hero-layer" style={reduce ? undefined : { y: sunY }}>
             <motion.div
               className="hero-layer-inner"
-              initial={reduce ? false : { opacity: 0, y: 80 }}
-              animate={on ? { opacity: 1, y: 0 } : undefined}
+              initial={reduce ? false : { y: 80 }}
+              animate={on ? { y: 0 } : undefined}
               transition={{ duration: 1.4, delay: d, ease: [0.22, 1, 0.36, 1] }}
             >
               <Art id="hero-sun" priority />
@@ -202,8 +204,9 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
           </Layer>
 
           <motion.a
-            href="#manifiesto"
+            href="#paquetes"
             className="scroll-cue"
+            aria-label={t.hero.scroll}
             style={reduce ? undefined : { opacity: cueOpacity }}
             initial={reduce ? false : { opacity: 0 }}
             animate={on ? { opacity: 1 } : undefined}

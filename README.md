@@ -28,6 +28,16 @@ Todo está en `src/content/site.ts`:
 - **Nosotros**: muestra los retratos de `../04-fotos/todas/equipo/alex.jpg` y `agostina.jpg`. Para cambiarlos, reemplazar los archivos y correr `npm run images`. Los roles que aparecen debajo de cada retrato se editan en `dictionaries.ts` → `about.team`.
 - **Permisos**: las fotos con personas necesitan su autorización. La cumbre del CAM quedó afuera hasta tener permiso.
 
+## SEO
+
+- **Dirección del sitio**: se resuelve sola en `next.config.ts`. Usa `NEXT_PUBLIC_SITE_URL` si está definida; si no, en Vercel toma el dominio de producción del proyecto. Cuando tengan dominio propio, conectarlo en Vercel (o definir `NEXT_PUBLIC_SITE_URL=https://dominio`) y volver a publicar.
+- **Metadatos** (`src/lib/metadata.ts`): título y descripción por idioma, canonical, hreflang `es` / `en` / `x-default`, Open Graph y X con imagen, permiso para mostrar imágenes grandes en Google.
+- **Datos estructurados** (`src/lib/structuredData.ts`): el estudio como servicio profesional en El Chaltén y Mendoza, con sus paquetes y servicios, el equipo (formado en la EPGAMT), el sitio, la página y cada foto con autoría (Google Imágenes).
+- **Archivos para buscadores** (se generan en el build): `/sitemap.xml` con las dos versiones y todas las fotos, `/robots.txt`, `/manifest.webmanifest` y `/llms.txt` (resumen para asistentes de IA).
+- **Google Search Console**: verificar el sitio con `NEXT_PUBLIC_GSC_VERIFICATION=<código>` (método "etiqueta HTML") y enviar `/sitemap.xml`.
+- **Caché**: `vercel.json` le da 30 días de caché a `/art` y `/img`. Si se reemplaza una foto con el mismo nombre, puede tardar en verse: mejor usar un nombre nuevo.
+- Los textos que ven los buscadores son los de `dictionaries.ts`: si cambia el título del inicio o la descripción, conviene mantener "El Chaltén" y "fotógrafos / fotografía".
+
 ## Estructura
 
 ```

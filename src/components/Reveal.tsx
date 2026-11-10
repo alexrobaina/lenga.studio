@@ -80,7 +80,7 @@ export function Title({
         </motion.p>
       )}
       <H id={id} className="display h2">
-        {line(line1, 0)}
+        {line(line1, 0)}{" "}
         {line(line2, 1, "accent")}
       </H>
     </motion.div>

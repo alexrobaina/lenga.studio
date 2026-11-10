@@ -572,12 +572,12 @@ h3.h2 {
   left: 0;
   right: 0;
   margin: 0 auto;
-  max-width: 1040px;
+  max-width: 1240px;
   padding: 0 var(--gutter);
   text-align: center;
 }
 .hero-title {
-  font-size: clamp(2.1rem, 4.3vw, 4.2rem);
+  font-size: clamp(2.1rem, 3.9vw, 3.9rem);
   text-wrap: balance;
   /* halo suave para que el título no compita con la acuarela */
   text-shadow: 0 0 28px rgba(246, 236, 226, 0.75), 0 0 2px rgba(246, 236, 226, 0.5);

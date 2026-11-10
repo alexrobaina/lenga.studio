@@ -15,22 +15,8 @@ import { useMedia } from "@/lib/useMedia";
 import Picture, { photoRatio } from "./Picture";
 import { Reveal, Title } from "./Reveal";
 import Bleed from "./Bleed";
+import { CHALTEN, MENDOZA_COLS } from "@/content/gallery";
 
-const CHALTEN = [
-  "carpa-glaciar-2",
-  "refugio-mates-cartas",
-  "nevada-refugio-bn",
-  "torre-bn-nubes",
-  "cruce-cuerda-rio",
-  "esquiadora-valle-laguna",
-  "tormenta-bn-brazos",
-];
-// Selección corta: menos fotos, más fuertes.
-const MENDOZA_COLS = [
-  ["grupo-cresta-amanecer", "travesia-bn-nieve"],
-  ["retrato-bn-cuerda", "luna-cerro-nevado"],
-  ["tres-ladera-nevada", "valle-atardecer-rosa"],
-];
 const ALL = [...CHALTEN, ...MENDOZA_COLS.flat()];
 
 const useIsoLayout = typeof window === "undefined" ? useEffect : useLayoutEffect;

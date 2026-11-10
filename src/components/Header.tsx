@@ -54,7 +54,7 @@ export default function Header({ t }: { t: Dict }) {
                 {l.label}
               </a>
             ))}
-            <a href={t.nav.switchHref} className="nav-lang" hrefLang={t.lang === "es" ? "en" : "es"} aria-label={t.nav.switchLabel}>
+            <a href={t.nav.switchHref} className="nav-lang" hrefLang={t.lang === "es" ? "en" : "es"} aria-label={`${t.nav.switchShort} · ${t.nav.switchLabel}`}>
               {t.nav.switchShort}
             </a>
             <a href={whatsappHref(t.contact.whatsappMessage)} className="btn btn--primary btn--sm">
