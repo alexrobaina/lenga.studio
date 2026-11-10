@@ -43,12 +43,26 @@ const EXTS = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG"];
 const findSource = (p) => EXTS.map((e) => path.join(SRC, `${p}${e}`)).find((f) => fs.existsSync(f));
 for (const who of ["alex", "agostina"]) if (findSource(`equipo/${who}`)) PHOTOS.push(`equipo/${who}`);
 
+// En el hosting (Vercel, etc.) solo se sube la carpeta web/: los originales de ../04-fotos no están.
+// En ese caso se usan las imágenes ya generadas (public/img + images.generated.json) y no se hace nada.
+if (!fs.existsSync(SRC)) {
+  console.log(`· No está ${SRC}: se usan las fotos ya generadas en public/img.`);
+  process.exit(0);
+}
+
 fs.mkdirSync(OUT, { recursive: true });
+const previous = fs.existsSync(JSON_OUT) ? JSON.parse(fs.readFileSync(JSON_OUT, "utf8")) : {};
 const manifest = {};
 
 for (const p of PHOTOS) {
   const file = findSource(p);
   const id = path.basename(p);
+  if (!file) {
+    // Falta el original: se conserva lo ya generado, si existe.
+    if (previous[id]) manifest[id] = previous[id];
+    console.warn(`! Falta el original de ${p}${previous[id] ? " (se conserva la versión generada)" : ""}`);
+    continue;
+  }
   const img = sharp(file).rotate();
   const { width, height } = await img.metadata();
   const widths = WIDTHS.filter((w) => w < width).concat(width).filter((v, i, a) => a.indexOf(v) === i);

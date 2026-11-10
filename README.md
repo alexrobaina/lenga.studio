@@ -16,6 +16,8 @@ npx serve out -l 3001   # para ver la versión real (rápida). `npm run dev` es 
 
 Para publicar, subí la carpeta `out/` a cualquier hosting estático: Netlify, Vercel, Cloudflare Pages o un FTP. No necesita servidor.
 
+**Vercel**: el proyecto es la carpeta `web/` (Root Directory = `web` si el repositorio incluye todo `lenga-studio`). Los originales de `../04-fotos` no se suben: el build usa las fotos ya generadas en `public/img` y `src/content/images.generated.json`, así que esos archivos tienen que estar en el repositorio. Cada vez que cambies fotos, corré `npm run images` en tu máquina y subí los archivos nuevos.
+
 ## Antes de publicar (pendientes)
 
 Todo está en `src/content/site.ts`:
