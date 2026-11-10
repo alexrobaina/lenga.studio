@@ -88,7 +88,7 @@ const es = {
     chalten: {
       line1: "Fotografía de montaña ·",
       line2: "El Chaltén",
-      text: "Campamento sobre el glaciar frente al Torre, refugio, cruces técnicos y nevadas. La serie principal del estudio.",
+      text: "Campamento sobre el glaciar frente al Torre, refugio, cruces de río y nevadas.",
       drag: "Seguí bajando para recorrer la serie",
     },
     mendoza: {
@@ -124,7 +124,7 @@ const es = {
     eyebrow: "Cobertura de expediciones",
     line1: "Vamos con el grupo.",
     line2: "Ustedes guían, nosotros contamos la historia.",
-    text: "Trekkings y expediciones de varios días, incluido glaciar y Hielo Continental. Fotos para la agencia y un recuerdo profesional para cada participante.",
+    text: "Trekkings y salidas de varios días, incluido glaciar y Hielo Continental. Vamos como fotógrafos del grupo: la ruta y la seguridad son de tus guías. Entregamos fotos para la agencia y un recuerdo profesional para cada participante.",
     models: [
       { title: "Para agencias y guías", text: "Tarifa por día de salida más licencia de uso de las imágenes para web, redes y catálogo." },
       { title: "Para participantes", text: "Galería online con tus fotos de la salida, para descargar y compartir." },
@@ -146,8 +146,8 @@ const es = {
     eyebrow: "Nosotros",
     line1: "Alex y Agostina,",
     line2: "de Mendoza a El\u00A0Chaltén.",
-    text: "Somos fotógrafos y montañistas, formados en la EPGAMT, la Escuela Provincial de Guías de Alta Montaña y Trekking de Mendoza. Vivimos en Mendoza y cada temporada viajamos a El Chaltén para trabajar con los negocios del pueblo. Hicimos glaciar, campamento sobre hielo y travesías de varios días: conocemos el terreno y sabemos movernos en él. Alex además es desarrollador web: la foto, el diseño y la página salen del mismo lugar.",
-    en: "Mountain photographers from Mendoza, working in El Chaltén every season.",
+    text: "Somos fotógrafos de montaña, paisaje y producto, de Mendoza. Estamos cursando el primer año de la EPGAMT, la Escuela Provincial de Guías de Alta Montaña y Trekking. Esta temporada viajamos a El Chaltén para trabajar con los negocios del pueblo. Alex además es desarrollador web: la foto, el diseño y la página salen del mismo lugar.",
+    en: "Photographers from Mendoza, working in El Chaltén this season.",
     illustrationLabel: "Ilustración en acuarela: una loma con lengas frente al Fitz Roy",
     team: [
       { id: "alex", name: "Alex", role: "Fotografía y web", alt: "Retrato de Alex" },
@@ -284,7 +284,7 @@ const en: Dict = {
     chalten: {
       line1: "Mountain photography ·",
       line2: "El Chaltén",
-      text: "Camping on the glacier facing the Torre, the refugio, technical crossings and snowfall. The studio's main series.",
+      text: "Camping on the glacier facing the Torre, the refugio, river crossings and snowfall.",
       drag: "Keep scrolling to walk the series",
     },
     mendoza: {
@@ -320,7 +320,7 @@ const en: Dict = {
     eyebrow: "Expedition coverage",
     line1: "We go with the group.",
     line2: "You guide, we tell the story.",
-    text: "Treks and multi-day expeditions, including the glacier and the Southern Ice Field. Photos for the agency, and a professional keepsake for every participant.",
+    text: "Treks and multi-day trips, including the glacier and the Southern Ice Field. We join as the group's photographers: the route and safety belong to your guides. We deliver photos for the agency and a professional keepsake for every participant.",
     models: [
       { title: "For agencies and guides", text: "A day rate per trip plus an image license for web, social and catalogue." },
       { title: "For participants", text: "An online gallery with your photos from the trip, ready to download and share." },
@@ -342,8 +342,8 @@ const en: Dict = {
     eyebrow: "About",
     line1: "Alex and Agostina,",
     line2: "from Mendoza to El\u00A0Chaltén.",
-    text: "We're photographers and mountaineers, trained at EPGAMT, the Mendoza provincial school for high-mountain and trekking guides. We live in Mendoza and every season we travel to El Chaltén to work with local businesses. We've done glacier trips, camping on the ice and multi-day traverses: we know the terrain and how to move in it. Alex is also a web developer: the photos, the design and the website come from the same place.",
-    en: "Fotógrafos de montaña de Mendoza, trabajando en El Chaltén cada temporada.",
+    text: "We're mountain, landscape and product photographers from Mendoza. We're first-year students at EPGAMT, the Mendoza provincial school for high-mountain and trekking guides. This season we're travelling to El Chaltén to work with local businesses. Alex is also a web developer: the photos, the design and the website come from the same place.",
+    en: "Fotógrafos de Mendoza, trabajando en El Chaltén esta temporada.",
     illustrationLabel: "Watercolor illustration: a ridge with lenga trees facing Fitz Roy",
     team: [
       { id: "alex", name: "Alex", role: "Photography & web", alt: "Portrait of Alex" },

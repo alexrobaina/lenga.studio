@@ -69,7 +69,9 @@ export function structuredData(lang: Lang) {
     name: m.name,
     jobTitle: m.role,
     worksFor: { "@id": studio },
-    alumniOf: EPGAMT,
+    // Estudiantes de primer año (no egresados): afiliación, no "alumniOf".
+    affiliation: EPGAMT,
+    description: es ? "Estudiante de primer año de la EPGAMT" : "First-year student at EPGAMT",
     knowsLanguage: ["es", "en"],
     ...(manifest[m.id] ? { image: photoUrl(m.id) } : {}),
   }));
