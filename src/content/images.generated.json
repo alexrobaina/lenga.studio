@@ -1,0 +1,259 @@
+{
+  "atardecer-cordon-torre": {
+    "width": 1200,
+    "height": 580,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACQAwCdASoYAAwAPu1iqU2ppaOiMAgBMB2JQBWAA8d/H1i3b02kAP7ZWAxgTwxl9GajG1RT5jCVVMW2d8ctAF92agfGLhrDZMIAAA=="
+  },
+  "carpa-glaciar-1": {
+    "width": 1200,
+    "height": 800,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAwCdASoYABAAPu1orU6ppiSiMAgBMB2JZQAAOvIKpmgKSP4XgAD06xwwAU/cERyOvb6kol4fjthDKJkNMjeCey48fk+gAAA="
+  },
+  "carpa-glaciar-2": {
+    "width": 1200,
+    "height": 800,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoYABAAPu1Ct1apoqakGAEwHYlnAABc2Nxj/UniOIT8/wAA+/g2eWL0p0siRUFYFcEIzIwitlZ4fCaStXjH1h5s8VgXbrAA"
+  },
+  "refugio-mates-cartas": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwBACdASoYABIAPuFcqU2opSQiMAwBEBwJQBOmYdAzOgd1MZ+5ey8dKgAA/iM5mO7qd2ZFhvawZCNjo7WFSmMpy9x9n/wkqkqpRgLsGoRKK5yyYl1u9oMyppv8bQBqF1wRCV2e4sVee4sUkYJoBFB61OAAAA=="
+  },
+  "nevada-refugio-bn": {
+    "width": 1200,
+    "height": 800,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAwCdASoYABAAPu1orU2ppqSiMAgBMB2JaQAAW8Fz+fHpyKRgAP6vBWSTttHDWCq9GEUWj82OjvrMe/r1wcgA"
+  },
+  "torre-bn-nubes": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoYABIAPuFeqk2opSQiMAwBEBwJaTcAAAHbJJQ+JxXpElNy4AD+52KF0uEw1l6MhcrVce8WhUEL6Pl4RKQB+C+DSF7bACoruSS5zDfIAAA="
+  },
+  "cruce-cuerda-rio": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwBACdASoYABIAPu1mq04ppaQiMAgBMB2JZQC/7CFf+83O+Qr68qtadT02V2MAAP4brC1E+K9WrwQgMWscumM87tyNvPgLs/1/dADH+dXUW9SC2lpGsULcatMo8AAA"
+  },
+  "esquiadora-valle-laguna": {
+    "width": 1200,
+    "height": 900,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwBACdASoYABIAPu1mqU2ppaQiMAgBMB2JYgC2yCHRuE0JcHe//0E/WtKici8AAPGMxKjEK+U3YO+YqBe9rORNpSoLN5R5Iv+9u+7p38ENIzK22AL0x71h+4Lu2aDXbsQUgAAA"
+  },
+  "carpa-hielo-atardecer": {
+    "width": 1200,
+    "height": 800,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAwCdASoYABAAPu1iqk4ppaQiMAgBMB2JZwAAUp+ajBPM4fVCAAD+y7VzuPUBgxgDPyNkTjH7X9sgi6AAAA=="
+  },
+  "preparando-equipo-morena": {
+    "width": 1200,
+    "height": 800,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoYABAAPu1krU6ppaSiMAgBMB2JYwCdMoMqmEmf0dWwn41fdBwA/kB7uz71JXsbirJeACxrwJiUKgwaOHuX+rZePs7Pvhcta+4yCFIG3dEXOyMsAAA="
+  },
+  "tormenta-bn-brazos": {
+    "width": 1200,
+    "height": 800,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAwCdASoYABAAPu1krU2ppaSiMAgBMB2JaQAAW/AGOzRWflmtKgAA96ONUL3fNgHMbTfIB7UOxTcRj3d5e8ny4AA="
+  },
+  "mapa-brujula": {
+    "width": 1066,
+    "height": 1600,
+    "widths": [
+      480,
+      800,
+      1066
+    ],
+    "blur": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACwBgCdASoYACQAPuVapU2pJKOiNVgMASAciWUAvYtkAglJ13zdSb2dNrzklN7C7u8hh7YdPX11QMGGb+A/FgD+6dUYkDH4kKVDN+Vb6X/4J3+nXSLVsiLLDr5NyQxC7adyDtPBa/pOdHOKe4HDedkKVPxfevMDA2Lasz3HOxd50zV8d2IkDWhfXfa+nPaxRprKL7QpKm/Aju9fyYAAAA=="
+  },
+  "retrato-bn-cuerda": {
+    "width": 1066,
+    "height": 1600,
+    "widths": [
+      480,
+      800,
+      1066
+    ],
+    "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADwBQCdASoYACQAPs1WoE2npSMiOrzIAPAZiWkAAFm5XSOeOZ7wfNBXMts+Pmwkb57K/08fx3KLAAD+79REgqT3snSwe/delS7Hjd9DG5tIQxuDE3lHVqyoCrkZB1ZJuHgL4NSWuwvo2P+fQ9z5xN4F3hIB/0YRAm6Fmr0ybcsgiAgx2MgAAA=="
+  },
+  "retrato-bn-buff": {
+    "width": 1143,
+    "height": 1600,
+    "widths": [
+      480,
+      800,
+      1143
+    ],
+    "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBgCdASoYACIAPu1cqk6ppKOiMBqqqTAdiWkAAD2S7HurI7ugNNPj1qI5m7IrZBZtg0iq2ViKw+AA/u1OnX74sfGQ0skqGTYqJmt6F05QstOc2CN0b7YQIDaTkV9aohhImDUn84lK7A6nH344jlyX2Wamon2EE/l5ZylCoEqJwAAA"
+  },
+  "subida-grupo-pastizal": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoYABAALrV2u12jqampiYC0SxgF2AIfB6HEAWxu3sg+oAD4XFwL5REYgjAFinWxpt2K7uiULRtW00k2da9s7XAD+/l8ivvAAAA="
+  },
+  "grupo-cresta-amanecer": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQBACdASoYABAAPu1krU6ppaSiMAgBMB2JZQCsACIZraPybug717v1gAD93SuGEUD1+eoMsN5DMqxmtu1Eeb2b2n20NRSCviImCAAA"
+  },
+  "grupo-pared-roca": {
+    "width": 1500,
+    "height": 963,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ],
+    "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoYAA8APu1iqk2ppaQiMAgBMB2JYgC7ABE5Q2VrzKSgKVEAAP5vxDmkLHVJLdyuiSL8+xm6JRw6OH2MkGL1a+TCrQDpGyee8vK8NpsC8j8DORg2zZHAAA=="
+  },
+  "tres-ladera-nevada": {
+    "width": 1000,
+    "height": 1500,
+    "widths": [
+      480,
+      800,
+      1000
+    ],
+    "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACwBQCdASoYACQAPuVipk2pJaOiNVgIASAciWMAyrQWZ6YFKpa8FoSrlRWSg18pmoeXOyjyVgAAynHkEdx0KnU2jdWt8ZqLl7vZd+/1VOpkaKTCGY7SyGnB7q/v0bKQFrBWDMZ+rErYynqZzqNgK4/Qikx/gNruNnQd0PMieIdHz6gwL+O99ejb32jH2b2VlAAAAA=="
+  },
+  "travesia-bn-nieve": {
+    "width": 1500,
+    "height": 1000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ],
+    "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAwCdASoYABAAPu1orU2ppqSiMAgBMB2JaQAAW8tWkD2ZyM0YUAD+zWCxkSPZmdY3sb/JQ5AuVkh5MFxCE4o4AAA="
+  },
+  "luna-cerro-nevado": {
+    "width": 1000,
+    "height": 1500,
+    "widths": [
+      480,
+      800,
+      1000
+    ],
+    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBQCdASoYACQAPt1gpk2/piOiNVgMA/AbiUAXZCFAVW2LxGEWR+jN0GPfJJspoMGDEAD+2Av+6H/1n90n6n+i+Hdza+4Wm+t0LBBYkAr39ff6Mpa8dQtztW87MSMWsHJQDYWrDcisb5+D89Umgv8QHakVqzxwdNuUQGbjo8JJD8oNBFWdnYzgAAA="
+  },
+  "valle-atardecer-rosa": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAwCdASoYABAAPu1orU6ppiSiMAgBMB2JZQCo9Bsx3SJIL+Wh6AD+v237Z7llvjuHTr1ZJfLLGaJdOlcB/39ZryQj3acTAAA="
+  },
+  "mochila-mirando-valle": {
+    "width": 1500,
+    "height": 1000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ],
+    "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoYABAAPu1iqk2ppaQiMAgBMB2JQBOgAhN0c6Wmtps6LDAwAMqprd8gRUrnJK06POOVwlo7uLbL/mNUrZSyhBuGkkwJshT3W/HOWEshpYYYAAAA"
+  },
+  "panoramica-cordillera": {
+    "width": 1500,
+    "height": 983,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ],
+    "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBDsPJ3Qp9HusgADKbEePcfr+4LXLNrIboO1dTqW0fW7Kz4hEMgAodxBhDbxkFfeDeKeBewAA"
+  },
+  "alex": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      800,
+      960
+    ],
+    "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBQCdASoYAB4APt1cpk2opSOiN/qoARAbiWIAtOhVqHNAsKy8MIeR1d+DP85VQtkAAP3RT5oox3vWAni0eAFvFUV4V13Rt+JuFAVBiBwCm6JiL2KopLFObnti7pX6WXq57GJXGWT3oTT01RXY7yBJ11r4AAAA"
+  },
+  "agostina": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      480,
+      800,
+      960
+    ],
+    "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABQBQCdASoYACAAPu1iqE2ppaOiMAgBMB2JZgCdL+b2AAHVFYleb6X9uyMqr996UjWsjMAA/m31eCbC2kERR1uA/FB4jE/h+vrd79lJRtlXGhKJvGU5XylzyRmxZiKbY8OYg8domukRP5lK9EiMzj6EhrjakFbUdkU90/qDD2sjrbsX8RCAAA=="
+  }
+}

@@ -20,21 +20,21 @@ Para publicar, subí la carpeta `out/` a cualquier hosting estático: Netlify, V
 
 Todo está en `src/content/site.ts`:
 
-- **WhatsApp**: definir `NEXT_PUBLIC_WHATSAPP` (por ejemplo `5492962XXXXXX`) en `.env.local` o en el hosting. Mientras no esté definido, los botones de WhatsApp llevan a la sección de contacto.
-- **Dominio** (`url`), **Instagram** (`instagram`) y **mail** (`email`): hoy tienen valores provisorios (`lengastudio.com`, `@lengastudio`, `hola@lengastudio.com`). También hay que cambiar el dominio en `public/robots.txt`.
-- **Nosotros**: hoy muestra una ilustración. Al dejar `alex.jpg` y `agostina.jpg` en `../04-fotos/todas/equipo/` y correr `npm run images`, se reemplaza sola por los dos retratos. Los roles que aparecen debajo de cada retrato se editan en `dictionaries.ts` → `about.team`.
+- **WhatsApp**: `5491138997032` (Alex). Se puede pisar con `NEXT_PUBLIC_WHATSAPP` en `.env.local` o en el hosting. `whatsappDisplay` es cómo se muestra en el footer.
+- **Mail**: `alexrobainaph@gmail.com`. No hay redes sociales en la web hasta que existan.
+- **Dominio** (`url`): provisorio `lengastudio.com`. También hay que cambiarlo en `public/robots.txt`.
+- **Nosotros**: muestra los retratos de `../04-fotos/todas/equipo/alex.jpg` y `agostina.jpg`. Para cambiarlos, reemplazar los archivos y correr `npm run images`. Los roles que aparecen debajo de cada retrato se editan en `dictionaries.ts` → `about.team`.
 - **Permisos**: las fotos con personas necesitan su autorización. La cumbre del CAM quedó afuera hasta tener permiso.
-- **Foto del hero acuarela → foto**: el original disponible mide 1200 px. Para pantallas grandes conviene exportar una versión de 2400 px.
 
 ## Estructura
 
 ```
 src/content/dictionaries.ts   Todos los textos ES / EN
 src/content/site.ts           Contacto y datos del estudio
-src/components/               Una sección por archivo (Hero, PaintReveal, Works, Process…)
-src/components/scenes/        Ilustraciones SVG fuente (fitzroy, torre, night, ridge, refugio, blots)
+src/components/               Una sección por archivo (Hero, Services, Works, Process…)
+src/components/scenes/        Ilustraciones SVG fuente (fitzroy, night, ridge, refugio, blots)
 scripts/render-illustrations  Las renderiza una vez con Chrome → public/art/*.avif|webp (+ recorte para celular)
-src/components/WatercolorDefs Filtros de acuarela compartidos (wc-1…6, wc-round, cloud, torn)
+src/components/WatercolorDefs Filtros de acuarela compartidos (wc-1…6, wc-soft, wc-fine, wc-round, cloud, torn)
 scripts/optimize-images.mjs   Fotos → AVIF + WebP en 480/800/1200/1600 px + placeholder + og.jpg
 ```
 
@@ -46,18 +46,17 @@ scripts/optimize-images.mjs   Fotos → AVIF + WebP en 480/800/1200/1600 px + pl
 
 ## Estructura de la página
 
-Paisaje inicial → acuarela que pasa a foto → **paquetes por objetivo** (cada uno abre WhatsApp con el mensaje escrito) → trabajos (El Chaltén, salidas en Mendoza) → franja "tu negocio puede ser el próximo" → cómo trabajamos → expediciones → nosotros → contacto. Hay un botón flotante de WhatsApp desde que termina el paisaje inicial hasta Contacto.
+Paisaje inicial → **paquetes por objetivo** (cada uno abre WhatsApp con el mensaje escrito) → trabajos (El Chaltén, salidas en Mendoza) → franja "tu negocio puede ser el próximo" → cómo trabajamos → expediciones → nosotros → contacto. Hay un botón flotante de WhatsApp desde que termina el paisaje inicial hasta Contacto.
 
 ## Movimiento
 
 - **Sin intro**: el paisaje se arma en un segundo y la página se puede usar desde el principio. El scroll es el nativo del navegador, sin inercia.
 - **Paisaje inicial**: capas de acuarela con parallax de scroll y de mouse, el cielo pasa del amanecer al día, nube en la cumbre y algunas hojas de lenga. Sin personas.
-- **Acuarela → foto**: pinceladas que descubren la foto real del cordón del Torre.
 - **Fotos**: aparecen "sangrando" como acuarela húmeda.
 - **Trabajos**: galería horizontal fija en escritorio, carrusel en celular, visor de fotos con teclado.
 - **Cómo trabajamos**: sendero punteado que se dibuja con el scroll, sobre papel rasgado.
-- **Expediciones**: noche en el glaciar con estrellas, estrella fugaz y carpa encendida.
-- **Contacto**: refugio con humo, ventana encendida y nieve.
+- **Expediciones**: noche en el glaciar con estrellas, estrella fugaz y carpa encendida; abajo, un borde de bosque de lengas que se funde con la sección siguiente.
+- **Contacto**: refugio de madera pintado en acuarela al pie del Fitz Roy, entre lengas; humo, ventana encendida y nieve.
 
 Todo respeta `prefers-reduced-motion`.
 
@@ -69,4 +68,4 @@ Los filtros de acuarela (turbulencia, desplazamiento y bordes) son muy caros par
 
 - Ilustraciones: van en el HTML como SVG (unos 34 KB comprimido).
 - Fotos: carga diferida, en AVIF o WebP según el navegador.
-- JavaScript: unos 250 KB comprimido (React, Next, Motion y Lenis).
+- JavaScript: unos 250 KB comprimido (React, Next y Motion).

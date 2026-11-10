@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images": "node scripts/optimize-images.mjs",
+    "prebuild": "node scripts/optimize-images.mjs",
+    "illustrations": "tsx scripts/render-illustrations.tsx"
   },
   "dependencies": {
+    "motion": "^14.10.1",
     "next": "16.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0"
@@ -19,6 +23,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.5",
+    "puppeteer-core": "^24.43.1",
+    "sharp": "^0.35.5",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
