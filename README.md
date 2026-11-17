@@ -22,10 +22,11 @@ Para publicar, subí la carpeta `out/` a cualquier hosting estático: Netlify, V
 
 Todo está en `src/content/site.ts`:
 
-- **WhatsApp**: `5491138997032` (Alex). Se puede pisar con `NEXT_PUBLIC_WHATSAPP` en `.env.local` o en el hosting. `whatsappDisplay` es cómo se muestra en el footer.
-- **Mail**: `alexrobainaph@gmail.com`. No hay redes sociales en la web hasta que existan.
+- **WhatsApp** (`site.people`): Alex `5491138997032` (principal: lo usan el header, los paquetes y el botón flotante) y Agostina `5492615636880`. Contacto y el footer muestran los dos. Se pueden pisar con `NEXT_PUBLIC_WHATSAPP` y `NEXT_PUBLIC_WHATSAPP_AGOSTINA` en `.env.local` o en el hosting. `whatsappDisplay` es cómo se muestra cada número y `face` es el recorte del retrato (centro de la cara en % y zoom) que aparece en el botón de Contacto.
+- **Mail**: `info.lengastudio@gmail.com`. No hay redes sociales en la web hasta que existan.
 - **Dominio** (`url`): provisorio `lengastudio.com`. También hay que cambiarlo en `public/robots.txt`.
 - **Nosotros**: muestra los retratos de `../04-fotos/todas/equipo/alex.jpg` y `agostina.jpg`. Para cambiarlos, reemplazar los archivos y correr `npm run images`. Los roles que aparecen debajo de cada retrato se editan en `dictionaries.ts` → `about.team`.
+- **Gastronomía**: las 5 fotos vienen del proyecto "Food" de Behance (Alex), en `../04-fotos/todas/gastronomia/`. Cuatro son de una sesión para un bar de Buenos Aires (2016) y la ensalada es de 2011. El sitio las publica a 1600 px como máximo.
 - **Permisos**: las fotos con personas necesitan su autorización. La cumbre del CAM quedó afuera hasta tener permiso.
 
 ## SEO
@@ -54,11 +55,16 @@ scripts/optimize-images.mjs   Fotos → AVIF + WebP en 480/800/1200/1600 px + pl
 
 1. Copiar la foto a `../04-fotos/todas/<serie>/`.
 2. Sumarla a la lista `PHOTOS` de `scripts/optimize-images.mjs` y correr `npm run images`.
-3. Usarla en `Works.tsx` (`CHALTEN` o `MENDOZA_COLS`) y agregar su descripción en `dictionaries.ts` → `photos`, en los dos idiomas.
+3. Usarla en `src/content/gallery.ts` (`CHALTEN`, `FOOD_COLS` o `MENDOZA_COLS`) y agregar su descripción en `dictionaries.ts` → `photos`, en los dos idiomas.
 
-## Estructura de la página
+## Estructura de las páginas
 
-Paisaje inicial → **paquetes por objetivo** (cada uno abre WhatsApp con el mensaje escrito) → trabajos (El Chaltén, salidas en Mendoza) → franja "tu negocio puede ser el próximo" → cómo trabajamos → expediciones → nosotros → contacto. Hay un botón flotante de WhatsApp desde que termina el paisaje inicial hasta Contacto.
+Dos páginas para dos públicos, así cada mensaje de venta lleva a la que le habla a quien lo recibe. Las rutas están en `src/content/routes.ts` y las fotos de cada una en `src/content/gallery.ts` (`GALLERY`).
+
+- **Inicio, para negocios** (`/` y `/en/`): paisaje inicial → **paquetes por objetivo** (cada uno abre WhatsApp con el mensaje escrito) → trabajos (El Chaltén: refugio, nevadas y el Torre; gastronomía en Buenos Aires) → franja "tu negocio puede ser el próximo" → cómo trabajamos → franja para agencias y guías que lleva a Expediciones → nosotros → contacto.
+- **Expediciones, para agencias y guías** (`/expediciones/` y `/en/expeditions/`): noche en el glaciar → cómo trabajamos con agencias → galería del glaciar → salidas en Mendoza → nosotros (con la EPGAMT adelante) → contacto con el mensaje de WhatsApp para expediciones.
+
+Cada página tiene su título y descripción para Google (`meta` y `expPage.meta` en `dictionaries.ts`), su canonical y su versión en el otro idioma. El botón flotante de WhatsApp aparece desde que termina el paisaje inicial hasta Contacto.
 
 ## Movimiento
 

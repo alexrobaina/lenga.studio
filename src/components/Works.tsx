@@ -15,9 +15,8 @@ import { useMedia } from "@/lib/useMedia";
 import Picture, { photoRatio } from "./Picture";
 import { Reveal, Title } from "./Reveal";
 import Bleed from "./Bleed";
-import { CHALTEN, MENDOZA_COLS } from "@/content/gallery";
-
-const ALL = [...CHALTEN, ...MENDOZA_COLS.flat()];
+import { GALLERY, galleryPhotos } from "@/content/gallery";
+import type { Page } from "@/content/routes";
 
 const useIsoLayout = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
@@ -39,7 +38,9 @@ function HCard({ id, i, progress, label, onOpen }: { id: string; i: number; prog
   );
 }
 
-function Chalten({ t, open }: { t: Dict; open: (id: string) => void }) {
+type StripCopy = { line1: string; line2: string; text: string };
+
+function Chalten({ t, copy, ids, skipTo, open }: { t: Dict; copy: StripCopy; ids: string[]; skipTo: string; open: (id: string) => void }) {
   const ref = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -65,8 +66,8 @@ function Chalten({ t, open }: { t: Dict; open: (id: string) => void }) {
   const x = useTransform(scrollYProgress, [0, 1], [0, -dist]);
   const intro = (cls: string) => (
     <div className={cls}>
-      <Title id="chalten-title" eyebrow={t.work.eyebrow} line1={t.work.chalten.line1} line2={t.work.chalten.line2} />
-      <p className="lead">{t.work.chalten.text}</p>
+      <Title id="chalten-title" eyebrow={t.work.eyebrow} line1={copy.line1} line2={copy.line2} />
+      <p className="lead">{copy.text}</p>
       {pinned && (
         <p className="chalten-hint">
           <svg width="38" height="12" viewBox="0 0 38 12" aria-hidden="true">
@@ -83,14 +84,15 @@ function Chalten({ t, open }: { t: Dict; open: (id: string) => void }) {
     <section
       ref={ref}
       className={`chalten ${pinned ? "is-pinned" : ""}`}
-      style={pinned ? { height: `calc(100vh + ${Math.round(dist * 0.55)}px)` } : undefined}
+      // Cuánto scroll vertical cuesta recorrer la galería: menos de 1 a 1 para que no canse.
+      style={pinned ? { height: `calc(100vh + ${Math.round(dist * 0.4)}px)` } : undefined}
       aria-labelledby="chalten-title"
     >
       <div className="chalten-sticky">
         {!pinned && intro("chalten-intro chalten-intro--stacked")}
         <motion.div ref={track} className="chalten-track" style={pinned ? { x } : undefined}>
           {pinned && intro("chalten-intro")}
-          {CHALTEN.map((id, i) => (
+          {ids.map((id, i) => (
             <HCard key={id} id={id} i={i} progress={scrollYProgress} label={t.photos[id]} onOpen={() => open(id)} />
           ))}
           <div className="chalten-end" aria-hidden="true">
@@ -101,9 +103,15 @@ function Chalten({ t, open }: { t: Dict; open: (id: string) => void }) {
           </div>
         </motion.div>
         {pinned && (
-          <div className="chalten-progress" aria-hidden="true">
-            <motion.span style={{ width: bar }} />
-          </div>
+          <>
+            <div className="chalten-progress" aria-hidden="true">
+              <motion.span style={{ width: bar }} />
+            </div>
+            {/* Fijo mientras dura la galería, para quien quiere seguir de largo. */}
+            <a className="chalten-skip" href={`#${skipTo}`}>
+              {t.work.chalten.skip} ↓
+            </a>
+          </>
         )}
       </div>
     </section>
@@ -129,22 +137,35 @@ function Column({ ids, progress, speed, t, open, offset }: { ids: string[]; prog
   );
 }
 
-function Mendoza({ t, open }: { t: Dict; open: (id: string) => void }) {
+// Serie en tres columnas con parallax (Gastronomía, Mendoza).
+function Series({
+  id,
+  copy,
+  cols,
+  t,
+  open,
+}: {
+  id: string;
+  copy: { line1: string; line2: string; text: string };
+  cols: string[][];
+  t: Dict;
+  open: (id: string) => void;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const desktop = useMedia("(min-width: 900px)");
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const speeds = desktop ? [120, 260, 60] : [0, 0, 0];
   const offsets = desktop ? [0, 140, 40] : [0, 0, 0];
   return (
-    <div className="mendoza wrap">
+    <div id={id} className="mendoza wrap">
       <div className="mendoza-head">
-        <Title as="h3" line1={t.work.mendoza.line1} line2={t.work.mendoza.line2} />
+        <Title as="h3" line1={copy.line1} line2={copy.line2} />
         <Reveal>
-          <p className="lead">{t.work.mendoza.text}</p>
+          <p className="lead">{copy.text}</p>
         </Reveal>
       </div>
       <div ref={ref} className="mendoza-grid">
-        {MENDOZA_COLS.map((ids, i) => (
+        {cols.map((ids, i) => (
           <Column key={i} ids={ids} progress={scrollYProgress} speed={speeds[i]} offset={offsets[i]} t={t} open={open} />
         ))}
       </div>
@@ -171,11 +192,11 @@ function Soon({ t }: { t: Dict }) {
   );
 }
 
-function Lightbox({ t, index, setIndex }: { t: Dict; index: number | null; setIndex: (i: number | null) => void }) {
+function Lightbox({ t, all, index, setIndex }: { t: Dict; all: string[]; index: number | null; setIndex: (i: number | null) => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const go = useCallback(
-    (dir: number) => setIndex(index === null ? null : (index + dir + ALL.length) % ALL.length),
-    [index, setIndex]
+    (dir: number) => setIndex(index === null ? null : (index + dir + all.length) % all.length),
+    [index, setIndex, all.length]
   );
   useEffect(() => {
     if (index === null) return;
@@ -202,7 +223,7 @@ function Lightbox({ t, index, setIndex }: { t: Dict; index: number | null; setIn
           className="lightbox"
           role="dialog"
           aria-modal="true"
-          aria-label={t.photos[ALL[index]]}
+          aria-label={t.photos[all[index]]}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -210,16 +231,16 @@ function Lightbox({ t, index, setIndex }: { t: Dict; index: number | null; setIn
         >
           <AnimatePresence mode="wait">
             <motion.figure
-              key={ALL[index]}
+              key={all[index]}
               className="lightbox-figure"
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.35 }}
             >
-              <Picture id={ALL[index]} alt={t.photos[ALL[index]]} sizes="92vw" className="lightbox-img" />
+              <Picture id={all[index]} alt={t.photos[all[index]]} sizes="92vw" className="lightbox-img" />
               <figcaption>
-                {t.photos[ALL[index]]} <span>· {index + 1}/{ALL.length}</span>
+                {t.photos[all[index]]} <span>· {index + 1}/{all.length}</span>
               </figcaption>
             </motion.figure>
           </AnimatePresence>
@@ -238,15 +259,18 @@ function Lightbox({ t, index, setIndex }: { t: Dict; index: number | null; setIn
   );
 }
 
-export default function Works({ t }: { t: Dict }) {
+export default function Works({ t, page }: { t: Dict; page: Page }) {
   const [index, setIndex] = useState<number | null>(null);
-  const open = (id: string) => setIndex(ALL.indexOf(id));
+  const { strip, series } = GALLERY[page];
+  const all = galleryPhotos(page);
+  const open = (id: string) => setIndex(all.indexOf(id));
+  const home = page === "home";
   return (
     <div id="trabajos" className="works">
-      <Chalten t={t} open={open} />
-      <Mendoza t={t} open={open} />
-      <Soon t={t} />
-      <Lightbox t={t} index={index} setIndex={setIndex} />
+      <Chalten t={t} copy={home ? t.work.chalten : t.expPage.chalten} ids={strip} skipTo={series.id} open={open} />
+      <Series id={series.id} copy={home ? t.work.food : t.work.mendoza} cols={series.cols} t={t} open={open} />
+      {home && <Soon t={t} />}
+      <Lightbox t={t} all={all} index={index} setIndex={setIndex} />
     </div>
   );
 }

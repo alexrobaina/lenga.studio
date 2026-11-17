@@ -6,18 +6,41 @@ import { whatsappHref } from "@/content/site";
 
 // Botón de WhatsApp siempre a mano: aparece después del paisaje inicial
 // y se esconde al llegar a Contacto (ahí ya está el botón grande).
+// Mientras se baja leyendo se corre para no tapar texto; vuelve al subir o al frenar.
+const IDLE_MS = 700;
+
 export default function FloatingWhatsApp({ label, message }: { label: string; message: string }) {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const contact = document.getElementById("contacto");
-    const onScroll = () => {
+    let lastY = window.scrollY;
+    let idle: ReturnType<typeof setTimeout> | undefined;
+    const inRange = () => {
       const past = window.scrollY > window.innerHeight * 0.9;
       const atContact = contact ? contact.getBoundingClientRect().top < window.innerHeight * 0.7 : false;
-      setShow(past && !atContact);
+      return past && !atContact;
     };
-    onScroll();
+    const onScroll = () => {
+      const y = window.scrollY;
+      const goingDown = y > lastY + 2;
+      lastY = y;
+      clearTimeout(idle);
+      if (!inRange()) return setShow(false);
+      if (goingDown) {
+        setShow(false);
+        idle = setTimeout(() => setShow(inRange()), IDLE_MS);
+      } else {
+        setShow(true);
+      }
+    };
+    // Estado inicial (por ejemplo, al recargar a mitad de página) en el primer frame.
+    const raf = requestAnimationFrame(() => setShow(inRange()));
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(idle);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
   return (
     <AnimatePresence>

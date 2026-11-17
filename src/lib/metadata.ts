@@ -1,17 +1,19 @@
 import type { Metadata, Viewport } from "next";
 import { dictionaries, type Lang } from "@/content/dictionaries";
 import { site } from "@/content/site";
+import { ROUTES, type Page } from "@/content/routes";
 
 // Metadatos por idioma: título y descripción con las búsquedas que importan
 // ("fotógrafos El Chaltén", "fotografía de montaña Patagonia", "web y redes"),
 // canonical + hreflang (es, en, x-default), Open Graph / X y permisos para mostrar imágenes grandes.
-export function buildMetadata(lang: Lang): Metadata {
+export function buildMetadata(lang: Lang, page: Page = "home"): Metadata {
   const t = dictionaries[lang];
-  const path = lang === "es" ? "/" : "/en/";
+  const m = page === "home" ? t.meta : t.expPage.meta;
+  const path = ROUTES[lang][page];
   return {
     metadataBase: new URL(site.url),
-    title: t.meta.title,
-    description: t.meta.description,
+    title: m.title,
+    description: m.description,
     applicationName: site.name,
     authors: [{ name: "Alex" }, { name: "Agostina" }],
     creator: site.name,
@@ -19,7 +21,7 @@ export function buildMetadata(lang: Lang): Metadata {
     category: lang === "es" ? "Fotografía" : "Photography",
     alternates: {
       canonical: path,
-      languages: { es: "/", en: "/en/", "x-default": "/" },
+      languages: { es: ROUTES.es[page], en: ROUTES.en[page], "x-default": ROUTES.es[page] },
     },
     robots: {
       index: true,
@@ -27,20 +29,20 @@ export function buildMetadata(lang: Lang): Metadata {
       googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
     },
     openGraph: {
-      title: t.meta.title,
-      description: t.meta.description,
+      title: m.title,
+      description: m.description,
       url: path,
       siteName: site.name,
       locale: lang === "es" ? "es_AR" : "en_US",
       alternateLocale: lang === "es" ? ["en_US"] : ["es_AR"],
       type: "website",
-      images: [{ url: "/og.jpg", width: 1200, height: 630, alt: t.meta.ogAlt, type: "image/jpeg" }],
+      images: [{ url: "/og.jpg", width: 1200, height: 630, alt: m.ogAlt, type: "image/jpeg" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: t.meta.title,
-      description: t.meta.description,
-      images: [{ url: "/og.jpg", alt: t.meta.ogAlt }],
+      title: m.title,
+      description: m.description,
+      images: [{ url: "/og.jpg", alt: m.ogAlt }],
     },
     icons: {
       icon: [

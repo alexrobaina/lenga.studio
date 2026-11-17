@@ -16,7 +16,9 @@ const es = {
     cta: "Escribinos",
     switchLabel: "English",
     switchShort: "EN",
-    switchHref: "/en/",
+    business: "Para negocios",
+    howWeWork: "Cómo trabajamos",
+    gallery: "Galería",
     menu: "Menú",
     close: "Cerrar",
     skip: "Saltar al contenido",
@@ -38,6 +40,7 @@ const es = {
     line2: "Del resto nos ocupamos nosotros.",
     forLabel: "Para",
     cta: "Lo quiero",
+    sample: "Ver fotos de platos",
     note: "Armamos el presupuesto según tu negocio. Escribinos y te respondemos el mismo día.",
     items: [
       {
@@ -86,13 +89,19 @@ const es = {
   work: {
     eyebrow: "Trabajos",
     chalten: {
-      line1: "Fotografía de montaña ·",
+      line1: "Fotografía de montaña\u00A0·",
       line2: "El Chaltén",
-      text: "Campamento sobre el glaciar frente al Torre, refugio, cruces de río y nevadas.",
+      text: "El pueblo y su montaña con la luz real: el refugio, las nevadas y las agujas del Torre.",
       drag: "Seguí bajando para recorrer la serie",
+      skip: "Saltar la galería",
+    },
+    food: {
+      line1: "Gastronomía\u00A0·",
+      line2: "Buenos Aires",
+      text: "Platos para la carta y las redes de un bar: luz cálida, texturas y materiales que cuentan de dónde viene la comida.",
     },
     mendoza: {
-      line1: "Salidas fotográficas ·",
+      line1: "Salidas fotográficas\u00A0·",
       line2: "Mendoza",
       text: "Salidas a la cordillera de Mendoza: travesías con nieve, retratos en la montaña, crestas al amanecer y cumbres.",
     },
@@ -142,6 +151,35 @@ const es = {
     ctaNote: "Contanos la salida y las fechas, y te pasamos una propuesta.",
     illustrationLabel: "Ilustración: noche en el glaciar con una carpa encendida, la luna y las agujas del Torre",
   },
+  // Página de expediciones (/expediciones/): para agencias y guías.
+  expPage: {
+    meta: {
+      title: "Fotógrafos de expediciones en El Chaltén · Glaciar y trekking | Lenga Studio",
+      description:
+        "Cobertura fotográfica de trekkings, travesías y salidas al glaciar y al Hielo Continental en El Chaltén. Fotos para tu agencia y un recuerdo para cada participante.",
+      ogAlt: "Atardecer sobre el cordón del Torre desde el campamento en el glaciar · Lenga Studio",
+    },
+    whatsappMessage: "Hola Lenga Studio, quiero consultar por la cobertura fotográfica de una salida.",
+    chalten: {
+      line1: "En el glaciar\u00A0·",
+      line2: "El Chaltén",
+      text: "Campamento sobre el glaciar frente al Torre, cruces de río, nieve y tormenta: lo que vive el grupo, contado con fotos.",
+    },
+    aboutText:
+      "Somos fotógrafos de montaña de Mendoza y estamos cursando el primer año de la EPGAMT, la Escuela Provincial de Guías de Alta Montaña y Trekking. Caminamos, acampamos y cruzamos con el grupo sin frenarlo. La ruta y la seguridad siempre son de tus guías: nosotros contamos la historia.",
+    contact: {
+      line1: "¿Tenés una salida",
+      line2: "esta temporada?",
+      text: "Contanos la ruta, las fechas y cuántos son en el grupo, y te pasamos una propuesta.",
+    },
+    // Franja en el inicio que lleva a esta página.
+    teaser: {
+      eyebrow: "Agencias y guías",
+      title: "¿Organizás trekkings o salidas al glaciar?",
+      text: "También vamos con el grupo como fotógrafos de la salida: fotos para tu agencia y un recuerdo para cada participante.",
+      cta: "Ver cobertura de expediciones",
+    },
+  },
   about: {
     eyebrow: "Nosotros",
     line1: "Alex y Agostina,",
@@ -160,6 +198,7 @@ const es = {
     line2: "esta temporada?",
     text: "Pasamos a conocerte, tomamos un mate y vemos qué necesitás.",
     whatsapp: "Escribinos por WhatsApp",
+    whatsappTo: "Escribile a",
     whatsappMessage: "Hola Lenga Studio, quiero consultar por",
     email: "Mail",
     illustrationLabel: "Ilustración en acuarela: refugio de madera con la ventana encendida entre lengas, al pie del Fitz Roy",
@@ -172,6 +211,11 @@ const es = {
   },
   photos: {
     "carpa-glaciar-2": "Carpa sobre el glaciar con las agujas al fondo",
+    "caraotas-queso-hoja": "Caraotas con queso rallado en hoja de plátano",
+    "tajadas-queso-hoja": "Tajadas de plátano con queso",
+    "tequenos-plato": "Tequeños recién fritos",
+    "arepa-carne": "Arepa de carne mechada con tomate",
+    "ensalada-cuencos": "Ensalada de queso y hierbas en cuencos",
     "refugio-mates-cartas": "Mates y cartas en el refugio",
     "nevada-refugio-bn": "Nevada junto al refugio",
     "torre-bn-nubes": "Agujas del Torre entre nubes",
@@ -212,7 +256,9 @@ const en: Dict = {
     cta: "Get in touch",
     switchLabel: "Español",
     switchShort: "ES",
-    switchHref: "/",
+    business: "For businesses",
+    howWeWork: "How we work",
+    gallery: "Gallery",
     menu: "Menu",
     close: "Close",
     skip: "Skip to content",
@@ -234,6 +280,7 @@ const en: Dict = {
     line2: "We'll take care of the rest.",
     forLabel: "For",
     cta: "I want this",
+    sample: "See food photos",
     note: "We quote according to your business. Message us and we'll reply the same day.",
     items: [
       {
@@ -282,13 +329,19 @@ const en: Dict = {
   work: {
     eyebrow: "Work",
     chalten: {
-      line1: "Mountain photography ·",
+      line1: "Mountain photography\u00A0·",
       line2: "El Chaltén",
-      text: "Camping on the glacier facing the Torre, the refugio, river crossings and snowfall.",
+      text: "The village and its mountains in real light: the refugio, snowfall and the Torre spires.",
       drag: "Keep scrolling to walk the series",
+      skip: "Skip the gallery",
+    },
+    food: {
+      line1: "Food\u00A0·",
+      line2: "Buenos Aires",
+      text: "Dishes for a bar's menu and social media: warm light, textures and props that tell where the food comes from.",
     },
     mendoza: {
-      line1: "Photo trips ·",
+      line1: "Photo trips\u00A0·",
       line2: "Mendoza",
       text: "Trips into the Mendoza Andes: snowy traverses, portraits in the mountains, ridges at dawn and summits.",
     },
@@ -338,6 +391,33 @@ const en: Dict = {
     ctaNote: "Tell us about the trip and the dates, and we'll send you a proposal.",
     illustrationLabel: "Illustration: night on the glacier with a glowing tent, the moon and the Torre spires",
   },
+  expPage: {
+    meta: {
+      title: "Expedition photographers in El Chaltén · Glacier & trekking | Lenga Studio",
+      description:
+        "Photo coverage for treks, multi-day traverses and trips to the glacier and the Southern Ice Field in El Chaltén. Photos for your agency and a keepsake for every participant.",
+      ogAlt: "Sunset over the Torre range from the glacier camp · Lenga Studio",
+    },
+    whatsappMessage: "Hi Lenga Studio, I'd like to ask about photo coverage for a trip.",
+    chalten: {
+      line1: "On the glacier\u00A0·",
+      line2: "El Chaltén",
+      text: "Camping on the glacier facing the Torre, river crossings, snow and storms: what the group lives, told in photos.",
+    },
+    aboutText:
+      "We're mountain photographers from Mendoza and first-year students at EPGAMT, the Mendoza provincial school for high-mountain and trekking guides. We walk, camp and cross with the group without slowing it down. The route and safety always belong to your guides: we tell the story.",
+    contact: {
+      line1: "Planning a trip",
+      line2: "this season?",
+      text: "Tell us the route, the dates and the group size, and we'll send you a proposal.",
+    },
+    teaser: {
+      eyebrow: "Agencies and guides",
+      title: "Do you run treks or glacier trips?",
+      text: "We also join the group as the trip's photographers: photos for your agency and a keepsake for every participant.",
+      cta: "See expedition coverage",
+    },
+  },
   about: {
     eyebrow: "About",
     line1: "Alex and Agostina,",
@@ -356,6 +436,7 @@ const en: Dict = {
     line2: "this season?",
     text: "We'll come by, share a mate and see what you need.",
     whatsapp: "Message us on WhatsApp",
+    whatsappTo: "Message",
     whatsappMessage: "Hi Lenga Studio, I'd like to ask about",
     email: "Email",
     illustrationLabel: "Watercolor illustration: a wooden mountain hut with a lit window among lenga trees, below Fitz Roy",
@@ -368,6 +449,11 @@ const en: Dict = {
   },
   photos: {
     "carpa-glaciar-2": "Tent on the glacier with the spires behind",
+    "caraotas-queso-hoja": "Black beans with grated cheese on a banana leaf",
+    "tajadas-queso-hoja": "Fried plantain slices with cheese",
+    "tequenos-plato": "Freshly fried tequeños",
+    "arepa-carne": "Arepa with shredded beef and tomato",
+    "ensalada-cuencos": "Cheese and herb salad in bowls",
     "refugio-mates-cartas": "Mate and cards in the refugio",
     "nevada-refugio-bn": "Snowfall by the refugio",
     "torre-bn-nubes": "The Torre spires in the clouds",

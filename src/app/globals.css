@@ -315,6 +315,24 @@ h3.h2 {
   backdrop-filter: blur(14px) saturate(1.2);
   box-shadow: 0 1px 0 rgba(30, 42, 35, 0.07);
 }
+.site-header.is-on-dark .brand,
+.site-header.is-on-dark .nav-link {
+  color: var(--crema);
+}
+.site-header.is-on-dark .nav-lang {
+  color: var(--crema);
+  border-color: rgba(243, 238, 228, 0.4);
+}
+.site-header.is-on-dark .burger span {
+  background: var(--crema);
+}
+.site-header.is-on-dark .btn--primary {
+  background: var(--crema);
+  color: var(--bosque);
+}
+.site-header.is-on-dark .btn--primary:hover {
+  background: var(--durazno);
+}
 .header-inner {
   max-width: 1320px;
   margin: 0 auto;
@@ -843,6 +861,23 @@ h3.h2 {
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--musgo);
+}
+.chalten-skip {
+  position: absolute;
+  /* A la izquierda, sobre el inicio de la barra: a la derecha choca con el botón flotante. */
+  left: max(var(--gutter), calc((100vw - 1240px) / 2 + var(--gutter)));
+  bottom: calc(6vh + 8px);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+  color: var(--texto-2);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line);
+}
+.chalten-skip:hover {
+  color: var(--lenga);
 }
 .chalten-hint svg {
   animation: nudge 2s var(--ease) infinite;
@@ -1689,6 +1724,75 @@ h3.h2 {
   gap: 12px;
   margin-top: 36px;
 }
+.btn--wa {
+  gap: 12px;
+  text-align: left;
+}
+.contact-actions .btn--wa {
+  padding: 8px 26px 8px 8px;
+}
+.btn-wa-avatar {
+  position: relative;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--musgo);
+}
+.btn-wa-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+/* La foto se agranda (--zoom) y se corre para que el punto (--fx, --fy) quede en el centro del círculo. */
+.btn-wa-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% * var(--zoom, 1));
+  max-width: none;
+  height: auto;
+  transform: translate(calc(var(--fx, 50%) * -1), calc(var(--fy, 50%) * -1));
+}
+.btn-wa-badge {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--bosque);
+  color: #fff;
+  box-shadow: 0 0 0 2px var(--bosque);
+}
+.btn--wa:hover .btn-wa-badge {
+  background: var(--lenga);
+  box-shadow: 0 0 0 2px var(--lenga);
+}
+.btn-wa-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.btn-wa-text small {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+.contact-mail {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+@media (max-width: 520px) {
+  .contact-actions .btn--wa {
+    width: 100%;
+    max-width: 340px;
+  }
+}
 .refugio {
   position: relative;
   height: clamp(280px, 34vw, 480px);
@@ -1805,10 +1909,13 @@ h3.h2 {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
+  gap: 0 24px;
   font-size: 15px;
 }
 .footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   text-decoration: none;
 }
 .footer-links a:hover {
@@ -1981,9 +2088,27 @@ h3.h2 {
   border-radius: 50%;
   background: var(--lenga);
 }
-.package-cta {
+.package-actions {
   margin-top: auto;
-  align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+.package-sample {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+  color: var(--texto-2);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line);
+}
+.package-sample:hover {
+  color: var(--lenga);
+}
+.package-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -2024,10 +2149,27 @@ h3.h2 {
   font-weight: 500;
   color: var(--bosque);
 }
-.services-strip li {
+.services-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+  transition: color 0.3s var(--ease), text-decoration-color 0.3s var(--ease);
+}
+.services-link:hover,
+.services-link:focus-visible {
+  color: var(--lenga);
+  text-decoration-color: currentColor;
+}
+.services-link .services-chip {
+  transition: transform 0.35s var(--ease);
+}
+.services-link:hover .services-chip {
+  transform: rotate(-6deg) scale(1.08);
 }
 .services-chip {
   display: grid;
@@ -2076,6 +2218,64 @@ h3.h2 {
 }
 .soon-band .btn--cream {
   margin-top: 0;
+}
+
+/* ───── Inicio → Expediciones (franja para agencias y guías) ───── */
+.exp-teaser {
+  padding-top: clamp(40px, 8vh, 100px);
+  padding-bottom: clamp(60px, 10vh, 120px);
+}
+.exp-teaser-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  overflow: hidden;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #1f2b27, #2f4232 55%, #4e6748);
+  color: var(--crema);
+}
+.exp-teaser-img {
+  align-self: stretch;
+  min-height: 260px;
+}
+.exp-teaser-img picture,
+.exp-teaser-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.exp-teaser-copy {
+  padding: clamp(28px, 4vw, 56px);
+}
+.exp-teaser-copy .eyebrow {
+  color: var(--durazno);
+}
+.exp-teaser-title {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.1;
+}
+.exp-teaser-text {
+  margin: 14px 0 26px;
+  max-width: 46ch;
+  color: #e6ece0;
+  line-height: 1.6;
+}
+.exp-teaser .btn--cream {
+  margin-top: 0;
+  white-space: normal;
+}
+@media (max-width: 760px) {
+  .exp-teaser-band {
+    grid-template-columns: 1fr;
+  }
+  .exp-teaser-img {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
 }
 
 /* ───── WhatsApp flotante ───── */

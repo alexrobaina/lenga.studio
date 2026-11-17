@@ -54,7 +54,7 @@ export function Title({
   line2: string;
   light?: boolean;
   center?: boolean;
-  as?: "h2" | "h3";
+  as?: "h1" | "h2" | "h3";
 }) {
   const reduce = useReducedMotion();
   const line = (text: string, i: number, cls?: string) => (

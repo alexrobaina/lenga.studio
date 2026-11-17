@@ -14,6 +14,9 @@ const ICONS: Record<string, string[]> = {
   expedition: ["M3 19l6-10 4 6 2-3 6 7z", "M9 9V4l4 1.5L9 7"],
 };
 
+// Paquetes con una serie de Trabajos que los muestra: el dueño ve fotos de su rubro antes de escribir.
+const SAMPLES: Record<string, string> = { mesas: "#gastronomia" };
+
 // Paquetes por objetivo del dueño (no por servicio): cada uno abre WhatsApp con el mensaje ya escrito.
 export default function Services({ t }: { t: Dict }) {
   const p = t.packages;
@@ -36,12 +39,19 @@ export default function Services({ t }: { t: Dict }) {
                   <li key={x}>{x}</li>
                 ))}
               </ul>
-              <a className="package-cta" href={whatsappHref(it.message)}>
-                {p.cta}
-                <svg width="30" height="12" viewBox="0 0 38 12" aria-hidden="true">
-                  <path d="M1 6 H35 M30 1 L36 6 L30 11" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
+              <div className="package-actions">
+                <a className="package-cta" href={whatsappHref(it.message)}>
+                  {p.cta}
+                  <svg width="30" height="12" viewBox="0 0 38 12" aria-hidden="true">
+                    <path d="M1 6 H35 M30 1 L36 6 L30 11" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+                {SAMPLES[it.key] && (
+                  <a className="package-sample" href={SAMPLES[it.key]}>
+                    {p.sample}
+                  </a>
+                )}
+              </div>
             </Reveal>
           ))}
         </div>
@@ -49,15 +59,22 @@ export default function Services({ t }: { t: Dict }) {
           <p className="packages-note">{p.note}</p>
           <ul id="servicios" className="services-strip" aria-label={t.services.eyebrow}>
             {t.services.items.map((s, i) => (
-              <li key={s.key} title={s.text}>
-                <span className="services-chip" style={{ backgroundImage: `url(/art/blot-${i}.webp)` }}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    {ICONS[s.key].map((d, k) => (
-                      <path key={k} d={d} />
-                    ))}
-                  </svg>
-                </span>
-                {s.title}
+              <li key={s.key}>
+                {/* Cada servicio abre WhatsApp con el servicio ya escrito; Expediciones tiene su propia sección. */}
+                <a
+                  className="services-link"
+                  href={s.key === "expedition" ? "#expediciones" : whatsappHref(`${t.contact.whatsappMessage} ${s.title.toLowerCase()}`)}
+                  title={s.text}
+                >
+                  <span className="services-chip" style={{ backgroundImage: `url(/art/blot-${i}.webp)` }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      {ICONS[s.key].map((d, k) => (
+                        <path key={k} d={d} />
+                      ))}
+                    </svg>
+                  </span>
+                  {s.title}
+                </a>
               </li>
             ))}
           </ul>

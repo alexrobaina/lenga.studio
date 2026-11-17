@@ -8,7 +8,7 @@ import Bleed from "./Bleed";
 import Picture, { hasPhoto } from "./Picture";
 import { Reveal, Title } from "./Reveal";
 
-export default function About({ t }: { t: Dict }) {
+export default function About({ t, text = t.about.text }: { t: Dict; text?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -25,7 +25,7 @@ export default function About({ t }: { t: Dict }) {
         <div className="about-copy">
           <Title id="about-title" eyebrow={t.about.eyebrow} line1={t.about.line1} line2={t.about.line2} />
           <Reveal>
-            <p className="about-text">{t.about.text}</p>
+            <p className="about-text">{text}</p>
           </Reveal>
           <Reveal>
             <p className="about-en">{t.about.en}</p>

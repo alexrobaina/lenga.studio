@@ -63,7 +63,7 @@ export default function Expeditions({ t }: { t: Dict }) {
           <div className="night-extend" aria-hidden="true" />
         </motion.div>
         <div className="night-copy wrap">
-          <Title id="exp-title" eyebrow={t.expeditions.eyebrow} line1={t.expeditions.line1} line2={t.expeditions.line2} light />
+          <Title as="h1" id="exp-title" eyebrow={t.expeditions.eyebrow} line1={t.expeditions.line1} line2={t.expeditions.line2} light />
         </div>
       </div>
       <div ref={body} className="exp-body">
@@ -93,7 +93,7 @@ export default function Expeditions({ t }: { t: Dict }) {
             ))}
           </div>
 
-          <div className="exp-models">
+          <div id="agencias" className="exp-models">
             <p className="exp-models-label">{t.expeditions.modelsLabel}</p>
             <ol className="exp-list">
               {t.expeditions.models.map((m, i) => (
@@ -107,7 +107,7 @@ export default function Expeditions({ t }: { t: Dict }) {
               ))}
             </ol>
             <Reveal className="exp-cta">
-              <a href={whatsappHref(t.contact.whatsappMessage + " " + t.nav.expeditions.toLowerCase())} className="btn btn--cream">
+              <a href={whatsappHref(t.expPage.whatsappMessage)} className="btn btn--cream">
                 {t.expeditions.cta}
               </a>
               <p>{t.expeditions.ctaNote}</p>

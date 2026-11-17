@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import type { Dict } from "@/content/dictionaries";
 import { whatsappHref } from "@/content/site";
+import { ROUTES, otherLang, type Page } from "@/content/routes";
 import { LogoMark } from "./Logo";
 
-export default function Header({ t }: { t: Dict }) {
+export default function Header({ t, page, message }: { t: Dict; page: Page; message: string }) {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [solid, setSolid] = useState(false);
@@ -26,12 +27,24 @@ export default function Header({ t }: { t: Dict }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const links = [
-    { href: "#paquetes", label: t.nav.services },
-    { href: "#trabajos", label: t.nav.work },
-    { href: "#expediciones", label: t.nav.expeditions },
-    { href: "#nosotros", label: t.nav.about },
-  ];
+  const links =
+    page === "home"
+      ? [
+          { href: "#paquetes", label: t.nav.services },
+          { href: "#trabajos", label: t.nav.work },
+          { href: ROUTES[t.lang].expeditions, label: t.nav.expeditions },
+          { href: "#nosotros", label: t.nav.about },
+        ]
+      : [
+          { href: ROUTES[t.lang].home, label: t.nav.business },
+          { href: "#agencias", label: t.nav.howWeWork },
+          { href: "#trabajos", label: t.nav.gallery },
+          { href: "#nosotros", label: t.nav.about },
+        ];
+  const other = otherLang(t.lang);
+  const switchHref = ROUTES[other][page];
+  // Expediciones arranca con la noche en el glaciar: el header va en claro hasta volverse sólido.
+  const onDark = page === "expeditions" && !solid && !open;
 
   return (
     <>
@@ -39,12 +52,12 @@ export default function Header({ t }: { t: Dict }) {
         {t.nav.skip}
       </a>
       <motion.header
-        className={`site-header ${solid ? "is-solid" : ""}`}
+        className={`site-header ${solid ? "is-solid" : ""} ${onDark ? "is-on-dark" : ""}`}
         animate={{ y: hidden ? "-110%" : "0%" }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="header-inner">
-          <a href="#inicio" className="brand" aria-label="Lenga Studio, inicio">
+          <a href={page === "home" ? "#inicio" : ROUTES[t.lang].home} className="brand" aria-label="Lenga Studio, inicio">
             <LogoMark className="brand-mark" strokeWidth={7} />
             <span className="brand-word">Lenga Studio</span>
           </a>
@@ -54,10 +67,10 @@ export default function Header({ t }: { t: Dict }) {
                 {l.label}
               </a>
             ))}
-            <a href={t.nav.switchHref} className="nav-lang" hrefLang={t.lang === "es" ? "en" : "es"} aria-label={`${t.nav.switchShort} · ${t.nav.switchLabel}`}>
+            <a href={switchHref} className="nav-lang" hrefLang={other} aria-label={`${t.nav.switchShort} · ${t.nav.switchLabel}`}>
               {t.nav.switchShort}
             </a>
-            <a href={whatsappHref(t.contact.whatsappMessage)} className="btn btn--primary btn--sm">
+            <a href={whatsappHref(message)} className="btn btn--primary btn--sm">
               {t.nav.cta}
             </a>
           </nav>
@@ -100,7 +113,8 @@ export default function Header({ t }: { t: Dict }) {
                 </motion.a>
               ))}
               <motion.a
-                href={t.nav.switchHref}
+                href={switchHref}
+                hrefLang={other}
                 className="menu-mobile-lang"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

@@ -8,6 +8,8 @@ const SRC = path.resolve("../04-fotos/todas");
 const OUT = path.resolve("public/img");
 const JSON_OUT = path.resolve("src/content/images.generated.json");
 const WIDTHS = [480, 800, 1200, 1600];
+// Ancho máximo publicado: originales más grandes (por ejemplo, los bajados de Behance a 2000 px) se achican a esto.
+const MAX = 1600;
 
 // Solo fotos con uso aprobado. Retiradas a pedido: pareja-laguna-de-los-tres, retrato-bn-guia.
 // Pendiente de permiso del CAM: cumbre-grupal-cam.
@@ -35,6 +37,12 @@ const PHOTOS = [
   "mendoza/valle-atardecer-rosa",
   "mendoza/mochila-mirando-valle",
   "mendoza/panoramica-cordillera",
+  // Gastronomía: proyecto "Food" de Behance (Alex). Buenos Aires; la mayoría para un bar, 2016.
+  "gastronomia/caraotas-queso-hoja",
+  "gastronomia/tajadas-queso-hoja",
+  "gastronomia/tequenos-plato",
+  "gastronomia/arepa-carne",
+  "gastronomia/ensalada-cuencos",
 ];
 
 // Retratos del equipo (opcionales): 04-fotos/todas/equipo/alex.jpg y agostina.jpg (también .jpeg, .png, .webp).
@@ -64,7 +72,11 @@ for (const p of PHOTOS) {
     continue;
   }
   const img = sharp(file).rotate();
-  const { width, height } = await img.metadata();
+  const meta = await img.metadata();
+  // Dimensiones publicadas: como máximo MAX de ancho, manteniendo la proporción.
+  const scale = Math.min(1, MAX / meta.width);
+  const width = Math.round(meta.width * scale);
+  const height = Math.round(meta.height * scale);
   const widths = WIDTHS.filter((w) => w < width).concat(width).filter((v, i, a) => a.indexOf(v) === i);
   for (const w of widths) {
     const base = path.join(OUT, `${id}-${w}`);

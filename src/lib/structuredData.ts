@@ -3,7 +3,8 @@
 // y las fotos con autoría. Todo sale de los mismos textos que se ven en la web.
 import { dictionaries, type Lang } from "@/content/dictionaries";
 import { site } from "@/content/site";
-import { CHALTEN, MENDOZA_COLS } from "@/content/gallery";
+import { galleryPhotos } from "@/content/gallery";
+import { ROUTES, type Page } from "@/content/routes";
 import images from "@/content/images.generated.json";
 
 const manifest = images as Record<string, { width: number; height: number; widths: number[] }>;
@@ -15,10 +16,11 @@ const EPGAMT = {
   address: { "@type": "PostalAddress", addressRegion: "Mendoza", addressCountry: "AR" },
 };
 
-export function structuredData(lang: Lang) {
+export function structuredData(lang: Lang, page: Page = "home") {
   const t = dictionaries[lang];
   const es = lang === "es";
-  const pageUrl = es ? `${site.url}/` : `${site.url}/en/`;
+  const pageUrl = `${site.url}${ROUTES[lang][page]}`;
+  const pageMeta = page === "home" ? t.meta : t.expPage.meta;
   const studio = `${site.url}/#studio`;
   const website = `${site.url}/#website`;
 
@@ -63,6 +65,7 @@ export function structuredData(lang: Lang) {
     })),
   ];
 
+  const contactOf = (id: string) => site.people.find((p) => p.id === id);
   const team = t.about.team.map((m) => ({
     "@type": "Person",
     "@id": `${site.url}/#${m.id}`,
@@ -74,11 +77,13 @@ export function structuredData(lang: Lang) {
     description: es ? "Estudiante de primer año de la EPGAMT" : "First-year student at EPGAMT",
     knowsLanguage: ["es", "en"],
     ...(manifest[m.id] ? { image: photoUrl(m.id) } : {}),
+    ...(contactOf(m.id) ? { telephone: `+${contactOf(m.id)!.whatsapp}` } : {}),
   }));
 
+  // Solo las fotos que se ven en esta página.
   const shots = [
-    ...t.expeditions.shots.map((s) => ({ id: s.id, caption: s.caption })),
-    ...[...CHALTEN, ...MENDOZA_COLS.flat()].map((id) => ({ id, caption: t.photos[id] })),
+    ...(page === "expeditions" ? t.expeditions.shots.map((s) => ({ id: s.id, caption: s.caption })) : []),
+    ...galleryPhotos(page).map((id) => ({ id, caption: t.photos[id] })),
   ].filter((s) => manifest[s.id]);
 
   const photos = shots.map((s) => ({
@@ -112,15 +117,16 @@ export function structuredData(lang: Lang) {
         image: [`${site.url}/og.jpg`, photoUrl("atardecer-cordon-torre"), photoUrl("carpa-glaciar-2")],
         email: site.email,
         telephone: `+${site.whatsapp}`,
-        contactPoint: {
+        contactPoint: site.people.map((p) => ({
           "@type": "ContactPoint",
+          name: p.name,
           contactType: es ? "consultas y presupuestos" : "enquiries and quotes",
-          telephone: `+${site.whatsapp}`,
+          telephone: `+${p.whatsapp}`,
           email: site.email,
-          url: `https://wa.me/${site.whatsapp}`,
+          url: `https://wa.me/${p.whatsapp}`,
           availableLanguage: ["Spanish", "English"],
           areaServed: "AR",
-        },
+        })),
         areaServed: [elChalten, mendoza],
         knowsLanguage: ["es", "en"],
         knowsAbout: es
@@ -144,8 +150,8 @@ export function structuredData(lang: Lang) {
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: t.meta.title,
-        description: t.meta.description,
+        name: pageMeta.title,
+        description: pageMeta.description,
         inLanguage: lang,
         isPartOf: { "@id": website },
         about: { "@id": studio },

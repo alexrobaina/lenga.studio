@@ -7,6 +7,7 @@ import { site, whatsappHref } from "@/content/site";
 import { rng, round } from "@/lib/rng";
 import { Reveal, Title } from "./Reveal";
 import Art from "./Art";
+import Picture, { hasPhoto } from "./Picture";
 import { CHIMNEY, WINDOW } from "./scenes/refugio";
 
 const r = rng(77);
@@ -18,7 +19,9 @@ const FLAKES = Array.from({ length: 36 }, () => ({
   drift: round(-30 + r() * 60),
 }));
 
-export default function Contact({ t }: { t: Dict }) {
+type ContactCopy = { line1: string; line2: string; text: string };
+
+export default function Contact({ t, copy = t.contact, message }: { t: Dict; copy?: ContactCopy; message: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
@@ -28,18 +31,43 @@ export default function Contact({ t }: { t: Dict }) {
   return (
     <section id="contacto" className="contact" aria-labelledby="contact-title">
       <div className="wrap contact-copy">
-        <Title id="contact-title" eyebrow={t.contact.eyebrow} line1={t.contact.line1} line2={t.contact.line2} center />
+        <Title id="contact-title" eyebrow={t.contact.eyebrow} line1={copy.line1} line2={copy.line2} center />
         <Reveal>
-          <p className="lead center">{t.contact.text}</p>
+          <p className="lead center">{copy.text}</p>
         </Reveal>
         <Reveal className="contact-actions">
-          <a className="btn btn--primary btn--lg" href={whatsappHref(t.contact.whatsappMessage)}>
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" />
-              <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2z" />
-            </svg>
-            {t.contact.whatsapp}
-          </a>
+          {site.people.map((p) => (
+            <a
+              key={p.id}
+              className="btn btn--primary btn--lg btn--wa"
+              href={whatsappHref(message, p.whatsapp)}
+              aria-label={`${t.contact.whatsappTo} ${p.name} · WhatsApp ${p.whatsappDisplay}`}
+            >
+              {/* La cara de quien responde genera más confianza que un ícono; el ícono de WhatsApp queda como insignia. */}
+              <span className="btn-wa-avatar" aria-hidden="true">
+                {hasPhoto(p.id) && (
+                  <span
+                    className="btn-wa-face"
+                    style={{ ["--fx" as string]: `${p.face.x}%`, ["--fy" as string]: `${p.face.y}%`, ["--zoom" as string]: p.face.zoom }}
+                  >
+                    <Picture id={p.id} alt="" sizes="200px" className="btn-wa-photo" />
+                  </span>
+                )}
+                <svg className="btn-wa-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" />
+                  <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.4-2-1.4-2.4-2.4l1-1-1-2z" />
+                </svg>
+              </span>
+              <span className="btn-wa-text">
+                <span>
+                  {t.contact.whatsappTo} {p.name}
+                </span>
+                <small>{p.whatsappDisplay}</small>
+              </span>
+            </a>
+          ))}
+        </Reveal>
+        <Reveal className="contact-mail">
           <a className="btn btn--text" href={`mailto:${site.email}`}>
             {t.contact.email}: {site.email}
           </a>

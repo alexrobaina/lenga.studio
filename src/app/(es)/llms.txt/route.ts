@@ -1,6 +1,7 @@
 // /llms.txt: resumen del estudio en texto plano para asistentes de IA (ChatGPT, Perplexity, etc.).
 import { dictionaries } from "@/content/dictionaries";
 import { site } from "@/content/site";
+import { ROUTES } from "@/content/routes";
 
 export const dynamic = "force-static";
 
@@ -24,13 +25,15 @@ ${t.expeditions.text}
 ${t.expeditions.models.map((m) => `- ${m.title}: ${m.text}`).join("\n")}
 
 ## Contacto
-- WhatsApp: ${site.whatsappDisplay} (https://wa.me/${site.whatsapp})
+${site.people.map((p) => `- WhatsApp ${p.name}: ${p.whatsappDisplay} (https://wa.me/${p.whatsapp})`).join("\n")}
 - Email: ${site.email}
 - Zona: El Chaltén (Santa Cruz) y Mendoza, Argentina. Atención en español e inglés.
 
 ## Páginas
 - [Sitio en español](${site.url}/)
 - [Site in English](${site.url}/en/): ${en.meta.description}
+- [Cobertura de expediciones](${site.url}${ROUTES.es.expeditions}): ${t.expPage.meta.description}
+- [Expedition coverage](${site.url}${ROUTES.en.expeditions}): ${en.expPage.meta.description}
 `;
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

@@ -180,7 +180,7 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
               <a className="btn btn--primary" href={whatsappHref(t.contact.whatsappMessage)}>
                 {t.hero.primary}
               </a>
-              <a className="btn btn--ghost" href="#paquetes">
+              <a className="btn btn--ghost" href="#trabajos">
                 {t.hero.secondary}
               </a>
             </motion.div>

@@ -236,6 +236,61 @@
     ],
     "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgBDsPJ3Qp9HusgADKbEePcfr+4LXLNrIboO1dTqW0fW7Kz4hEMgAodxBhDbxkFfeDeKeBewAA"
   },
+  "caraotas-queso-hoja": {
+    "width": 1343,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1343
+    ],
+    "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBgCdASoYACQAPu1oqk2ppqQiMBqqqTAdiUAX2AKvEeQcSURVl47ajxYBJ6UZkC8F9ZVD1bQXvrWywjsAAPX+5IyuGE872GEZDcg4TMeXCK6fGQWL4OFptR+U7y0IWOEWqaS2SOcOTfz6sEMCz07ugPw23u7ytl4Wi8eDSMBU3Ij3JkGLbrgONQsLwHOgAAA="
+  },
+  "tajadas-queso-hoja": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQBACdASoYABAAPu1kqU2ppaQiMAgBMB2JYgCsIMgCd5Sy7H/cifElyfIAANu87EGoU+/ta85NDM7gmo8tBYSkjvLOk4EOMoyPYc4HNXNd9K6ER6osgWA3Y4AAAA=="
+  },
+  "tequenos-plato": {
+    "width": 1600,
+    "height": 1073,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAwBACdASoYABAAPu1kqU4ppaOiMAgBMB2JZgCdMoADUphcLRJR7i7j0QAA+ONxUIZf7dwkHzYw1NqDYBnK3B/lkeJfryBoWxsHIaNP3RLOVRPHpNhbCoHW1IXPCAeEZ+oxCKWgAAA="
+  },
+  "arepa-carne": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwBACdASoYABAAPu1iqk4ppaQiMAgBMB2JaACdMoAC+j5IxC9CJ307RgAA+p1v09NkI6D1HHz06Utz0sLl8fwsshvAZLj984HnCebGzqYwdzsToVqIPCHHJsUF+QmUM0+yxGiJ7Jr8EgAA"
+  },
+  "ensalada-cuencos": {
+    "width": 1600,
+    "height": 623,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAwCdASoYAAkAPu1iqU2ppaOiMAgBMB2JQBOmUABfmRJraP34dRgA/t7dj3tnVESgAtIWGA6GKfJuZNDuV9Hye66Zbts18AAAAA=="
+  },
   "alex": {
     "width": 960,
     "height": 1200,
