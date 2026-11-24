@@ -27,6 +27,7 @@ ${t.expeditions.models.map((m) => `- ${m.title}: ${m.text}`).join("\n")}
 ## Contacto
 ${site.people.map((p) => `- WhatsApp ${p.name}: ${p.whatsappDisplay} (https://wa.me/${p.whatsapp})`).join("\n")}
 - Email: ${site.email}
+- Instagram: @${site.instagram.handle} (${site.instagram.url})
 - Zona: El Chaltén (Santa Cruz) y Mendoza, Argentina. Atención en español e inglés.
 
 ## Páginas

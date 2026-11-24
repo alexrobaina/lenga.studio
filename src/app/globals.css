@@ -1784,7 +1784,9 @@ h3.h2 {
 }
 .contact-mail {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 4px 20px;
   margin-top: 14px;
 }
 @media (max-width: 520px) {

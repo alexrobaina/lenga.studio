@@ -117,6 +117,7 @@ export function structuredData(lang: Lang, page: Page = "home") {
         image: [`${site.url}/og.jpg`, photoUrl("atardecer-cordon-torre"), photoUrl("carpa-glaciar-2")],
         email: site.email,
         telephone: `+${site.whatsapp}`,
+        sameAs: [site.instagram.url],
         contactPoint: site.people.map((p) => ({
           "@type": "ContactPoint",
           name: p.name,

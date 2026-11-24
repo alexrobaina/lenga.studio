@@ -71,6 +71,9 @@ export default function Contact({ t, copy = t.contact, message }: { t: Dict; cop
           <a className="btn btn--text" href={`mailto:${site.email}`}>
             {t.contact.email}: {site.email}
           </a>
+          <a className="btn btn--text" href={site.instagram.url} target="_blank" rel="noopener me">
+            {t.contact.instagram}: @{site.instagram.handle}
+          </a>
         </Reveal>
       </div>
 

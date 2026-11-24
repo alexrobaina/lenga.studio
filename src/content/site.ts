@@ -29,6 +29,7 @@ export const site = {
   people,
   whatsapp: people[0]?.whatsapp ?? "",
   email: "info.lengastudio@gmail.com",
+  instagram: { handle: "lengastudio.chalten", url: "https://www.instagram.com/lengastudio.chalten/" },
   location: "Mendoza y El Chaltén, Argentina",
 };
 

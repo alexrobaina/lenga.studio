@@ -201,6 +201,7 @@ const es = {
     whatsappTo: "Escribile a",
     whatsappMessage: "Hola Lenga Studio, quiero consultar por",
     email: "Mail",
+    instagram: "Instagram",
     illustrationLabel: "Ilustración en acuarela: refugio de madera con la ventana encendida entre lengas, al pie del Fitz Roy",
   },
   footer: {
@@ -439,6 +440,7 @@ const en: Dict = {
     whatsappTo: "Message",
     whatsappMessage: "Hi Lenga Studio, I'd like to ask about",
     email: "Email",
+    instagram: "Instagram",
     illustrationLabel: "Watercolor illustration: a wooden mountain hut with a lit window among lenga trees, below Fitz Roy",
   },
   footer: {

@@ -24,7 +24,7 @@ Todo está en `src/content/site.ts`:
 
 - **WhatsApp** (`site.people`): Alex `5491138997032` (principal: lo usan el header, los paquetes y el botón flotante) y Agostina `5492615636880`. Contacto y el footer muestran los dos. Se pueden pisar con `NEXT_PUBLIC_WHATSAPP` y `NEXT_PUBLIC_WHATSAPP_AGOSTINA` en `.env.local` o en el hosting. `whatsappDisplay` es cómo se muestra cada número y `face` es el recorte del retrato (centro de la cara en % y zoom) que aparece en el botón de Contacto.
 - **Mail**: `info.lengastudio@gmail.com`. No hay redes sociales en la web hasta que existan.
-- **Dominio** (`url`): provisorio `lengastudio.com`. También hay que cambiarlo en `public/robots.txt`.
+- **Dominio**: `lengastudio.com`, conectado el 24/11/2026. Está comprado en Squarespace (DNS: registro A `@` → `216.198.79.1` y CNAME `www` → `8ce32f725e02b703.vercel-dns-017.com`) y está agregado en el proyecto `lenga-studio` de Vercel. `www` redirige con un 308 a `lengastudio.com`. El robots.txt y el sitemap se generan con la dirección del build.
 - **Nosotros**: muestra los retratos de `../04-fotos/todas/equipo/alex.jpg` y `agostina.jpg`. Para cambiarlos, reemplazar los archivos y correr `npm run images`. Los roles que aparecen debajo de cada retrato se editan en `dictionaries.ts` → `about.team`.
 - **Gastronomía**: las 5 fotos vienen del proyecto "Food" de Behance (Alex), en `../04-fotos/todas/gastronomia/`. Cuatro son de una sesión para un bar de Buenos Aires (2016) y la ensalada es de 2011. El sitio las publica a 1600 px como máximo.
 - **Permisos**: las fotos con personas necesitan su autorización. La cumbre del CAM quedó afuera hasta tener permiso.

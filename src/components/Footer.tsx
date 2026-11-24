@@ -22,6 +22,9 @@ export default function Footer({ t, page }: { t: Dict; page: Page }) {
             </a>
           ))}
           <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={site.instagram.url} target="_blank" rel="noopener me">
+            Instagram · @{site.instagram.handle}
+          </a>
           {page === "home" ? (
             <a href={ROUTES[t.lang].expeditions}>{t.nav.expeditions}</a>
           ) : (
