@@ -2,7 +2,8 @@
 import type { Page } from "./routes";
 
 // Inicio (negocios): el pueblo y su montaña, lo que también le sirve a un alojamiento.
-export const CHALTEN = ["torre-bn-nubes", "refugio-mates-cartas", "nevada-refugio-bn"];
+// El refugio va primero: es la foto con color y gente; las de blanco y negro la acompañan.
+export const CHALTEN = ["refugio-mates-cartas", "torre-bn-nubes", "nevada-refugio-bn"];
 // Expediciones (agencias): lo que vive el grupo en el glaciar.
 export const GLACIER = ["carpa-glaciar-2", "cruce-cuerda-rio", "esquiadora-valle-laguna", "tormenta-bn-brazos"];
 // Gastronomía (Buenos Aires): la serie que más le habla a restaurantes y cafés.

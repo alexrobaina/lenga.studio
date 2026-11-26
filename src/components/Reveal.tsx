@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReduceMotion } from "@/lib/reducedMotion";
 
 // Aparición suave al entrar en pantalla.
 export function Reveal({
@@ -16,7 +17,7 @@ export function Reveal({
   y?: number;
   as?: "div" | "li" | "article";
 }) {
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   const M = motion[as];
   return (
     <M
@@ -31,7 +32,8 @@ export function Reveal({
   );
 }
 
-// Titular de marca en dos líneas: la segunda en itálica color lenga. Cada línea sube desde una máscara.
+// Titular en dos líneas. La segunda va en itálica color lenga solo con `accent` (el recurso de marca va
+// una sola vez por página: en el titular principal). Cada línea sube desde una máscara.
 // La animación se dispara desde el bloque (no desde cada línea): una línea escondida dentro de su
 // máscara nunca "entra en pantalla" para el IntersectionObserver.
 const lineVariants = {
@@ -46,6 +48,7 @@ export function Title({
   line2,
   light = false,
   center = false,
+  accent = false,
   as: H = "h2",
 }: {
   id?: string;
@@ -54,9 +57,10 @@ export function Title({
   line2: string;
   light?: boolean;
   center?: boolean;
+  accent?: boolean;
   as?: "h1" | "h2" | "h3";
 }) {
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   const line = (text: string, i: number, cls?: string) => (
     <span className={`line ${cls ?? ""}`}>
       <motion.span style={{ display: "inline-block" }} variants={lineVariants} custom={i}>
@@ -81,7 +85,7 @@ export function Title({
       )}
       <H id={id} className="display h2">
         {line(line1, 0)}{" "}
-        {line(line2, 1, "accent")}
+        {line(line2, 1, accent ? "accent" : undefined)}
       </H>
     </motion.div>
   );

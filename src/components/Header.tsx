@@ -30,8 +30,8 @@ export default function Header({ t, page, message }: { t: Dict; page: Page; mess
   const links =
     page === "home"
       ? [
-          { href: "#paquetes", label: t.nav.services },
           { href: "#trabajos", label: t.nav.work },
+          { href: "#paquetes", label: t.nav.services },
           { href: ROUTES[t.lang].expeditions, label: t.nav.expeditions },
           { href: "#nosotros", label: t.nav.about },
         ]

@@ -1,16 +1,17 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import type { Dict } from "@/content/dictionaries";
 import Art from "./Art";
 import Bleed from "./Bleed";
 import Picture, { hasPhoto } from "./Picture";
 import { Reveal, Title } from "./Reveal";
+import { useReduceMotion } from "@/lib/reducedMotion";
 
 export default function About({ t, text = t.about.text }: { t: Dict; text?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
   const rotate = useTransform(scrollYProgress, [0, 1], [-2.5, 1.5]);
@@ -23,7 +24,7 @@ export default function About({ t, text = t.about.text }: { t: Dict; text?: stri
     <section id="nosotros" className="about" aria-labelledby="about-title">
       <div className="wrap about-grid">
         <div className="about-copy">
-          <Title id="about-title" eyebrow={t.about.eyebrow} line1={t.about.line1} line2={t.about.line2} />
+          <Title id="about-title" line1={t.about.line1} line2={t.about.line2} />
           <Reveal>
             <p className="about-text">{text}</p>
           </Reveal>
@@ -38,7 +39,7 @@ export default function About({ t, text = t.about.text }: { t: Dict; text?: stri
                 <motion.figure
                   key={m.id}
                   className={`portrait portrait--${i}`}
-                  style={reduce ? undefined : i === 0 ? { y, rotate } : { y: y2, rotate: rotate2 }}
+                  style={reduce ? { y: 0, rotate: 0 } : i === 0 ? { y, rotate } : { y: y2, rotate: rotate2 }}
                 >
                   <Bleed className="portrait-img">
                     <Picture id={m.id} alt={m.alt} sizes="(min-width: 900px) 28vw, 60vw" />
@@ -55,7 +56,7 @@ export default function About({ t, text = t.about.text }: { t: Dict; text?: stri
               className="about-art"
               role="img"
               aria-label={t.about.illustrationLabel}
-              style={reduce ? undefined : { y, rotate }}
+              style={reduce ? { y: 0, rotate: 0 } : { y, rotate }}
             >
               <Art id="ridge" position="50% 50%" />
             </motion.div>

@@ -4,7 +4,6 @@ import { Fragment, useEffect, useRef } from "react";
 import {
   motion,
   useMotionValue,
-  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -16,6 +15,7 @@ import Art from "./Art";
 import { useMedia } from "@/lib/useMedia";
 import Birds from "./Birds";
 import Leaves from "./Leaves";
+import { useReduceMotion } from "@/lib/reducedMotion";
 
 type LayerProps = {
   progress: MotionValue<number>;
@@ -39,17 +39,17 @@ function Layer({ progress, px, py, depth, drop, pointer, delay, still, ready, cl
   return (
     <motion.div
       className={`hero-layer hero-land ${className ?? ""}`}
-      style={{ ["--drop" as string]: drop, ...(still ? {} : { y }) }}
+      style={{ ["--drop" as string]: drop, y: still ? 0 : y }}
     >
       <motion.div
         className="hero-layer-inner"
         // Solo sube (sin desvanecer): la capa se ve desde el primer cuadro, aun antes de que cargue el JS.
         // Así el navegador (y Google) la cuentan como contenido visible enseguida (mejor LCP en celular).
-        initial={still ? false : { y: 40 + depth * 2 }}
-        animate={ready || still ? { y: 0 } : undefined}
+        initial={{ y: 40 + depth * 2 }}
+        animate={ready ? { y: 0 } : undefined}
         transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
       >
-        <motion.div className="hero-layer-inner" style={still ? undefined : { x, y: yp }}>
+        <motion.div className="hero-layer-inner" style={{ x: still ? 0 : x, y: still ? 0 : yp }}>
           {children}
         </motion.div>
         {extend && <div className="hero-layer-extend" style={{ background: extend }} />}
@@ -60,7 +60,7 @@ function Layer({ progress, px, py, depth, drop, pointer, delay, still, ready, cl
 
 export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
   const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReduceMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   // Suaviza el scroll (sobre todo en celular y trackpads): las capas "flotan" en vez de saltar.
   const smooth = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.5 });
@@ -91,7 +91,8 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
   const cueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
 
   const d = 0;
-  const on = ready || reduce;
+  // Con movimiento reducido, MotionConfig (MotionRoot) saltea los desplazamientos: las entradas quedan en su lugar.
+  const on = ready;
   const common = { progress, px, py, still: reduce, ready };
   const words1 = t.hero.line1.split(" ");
   const words2 = t.hero.line2.split(" ");
@@ -103,13 +104,13 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
           <div className="hero-layer">
             <Art id="hero-sky-dawn" priority />
           </div>
-          <motion.div className="hero-layer" style={reduce ? undefined : { opacity: dayOpacity }}>
+          <motion.div className="hero-layer" style={{ opacity: reduce ? 1 : dayOpacity }}>
             <Art id="hero-sky-day" />
           </motion.div>
-          <motion.div className="hero-layer" style={reduce ? undefined : { y: sunY }}>
+          <motion.div className="hero-layer" style={{ y: reduce ? 0 : sunY }}>
             <motion.div
               className="hero-layer-inner"
-              initial={reduce ? false : { y: 80 }}
+              initial={{ y: 80 }}
               animate={on ? { y: 0 } : undefined}
               transition={{ duration: 1.4, delay: d, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -129,23 +130,15 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
 
           <motion.div
             className="hero-copy"
-            style={reduce ? undefined : { y: titleY, opacity: titleOpacity }}
+            style={{ y: reduce ? 0 : titleY, opacity: reduce ? 1 : titleOpacity }}
           >
-            <motion.p
-              className="eyebrow eyebrow--warm"
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              animate={on ? { opacity: 1, y: 0 } : undefined}
-              transition={{ duration: 0.9, delay: d + 0.1 }}
-            >
-              {t.hero.eyebrow}
-            </motion.p>
             <h1 id="hero-title" className="display hero-title">
               <span className="line">
                 {words1.map((w, i) => (
                   <Fragment key={i}>
                     <span className="word">
                       <motion.span
-                        initial={reduce ? false : { y: "110%" }}
+                        initial={{ y: "110%" }}
                         animate={on ? { y: "0%" } : undefined}
                         transition={{ duration: 1, delay: d + 0.14 + i * 0.036, ease: [0.22, 1, 0.36, 1] }}
                       >
@@ -160,7 +153,7 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
                   <Fragment key={i}>
                     <span className="word">
                       <motion.span
-                        initial={reduce ? false : { y: "110%" }}
+                        initial={{ y: "110%" }}
                         animate={on ? { y: "0%" } : undefined}
                         transition={{ duration: 1, delay: d + 0.24 + i * 0.027, ease: [0.22, 1, 0.36, 1] }}
                       >
@@ -171,9 +164,17 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
                 ))}
               </span>
             </h1>
+            <motion.p
+              className="hero-sub"
+              initial={{ opacity: 0, y: 12 }}
+              animate={on ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 0.9, delay: d + 0.38 }}
+            >
+              {t.hero.sub}
+            </motion.p>
             <motion.div
               className="hero-actions"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={on ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.9, delay: d + 0.45 }}
             >
@@ -204,11 +205,11 @@ export default function Hero({ t, ready }: { t: Dict; ready: boolean }) {
           </Layer>
 
           <motion.a
-            href="#paquetes"
+            href="#trabajos"
             className="scroll-cue"
             aria-label={t.hero.scroll}
-            style={reduce ? undefined : { opacity: cueOpacity }}
-            initial={reduce ? false : { opacity: 0 }}
+            style={{ opacity: reduce ? 1 : cueOpacity }}
+            initial={{ opacity: 0 }}
             animate={on ? { opacity: 1 } : undefined}
             transition={{ delay: d + 0.7 }}
           >

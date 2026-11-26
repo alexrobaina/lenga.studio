@@ -13,6 +13,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import FloatingWhatsApp from "./FloatingWhatsApp";
+import MotionRoot from "./MotionRoot";
 
 // Una misma estructura para las dos páginas del sitio:
 // inicio (negocios del pueblo) y expediciones (agencias y guías).
@@ -22,15 +23,15 @@ export default function Home({ lang, page = "home" }: { lang: Lang; page?: Page 
   const home = page === "home";
   const message = home ? t.contact.whatsappMessage : t.expPage.whatsappMessage;
   return (
-    <>
+    <MotionRoot>
       <WatercolorDefs />
       <Header t={t} page={page} message={message} />
       <main id="contenido">
         {home ? (
           <>
             <Opening t={t} />
-            <Services t={t} />
             <Works t={t} page={page} />
+            <Services t={t} />
             <Process t={t} />
             <ExpeditionsTeaser t={t} />
             <About t={t} />
@@ -49,6 +50,6 @@ export default function Home({ lang, page = "home" }: { lang: Lang; page?: Page 
       <FloatingWhatsApp label="WhatsApp" message={message} />
       <div className="grain" aria-hidden="true" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-    </>
+    </MotionRoot>
   );
 }

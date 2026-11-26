@@ -18,12 +18,12 @@ export default function Footer({ t, page }: { t: Dict; page: Page }) {
         <nav className="footer-links" aria-label="Footer">
           {site.people.map((p) => (
             <a key={p.id} href={`https://wa.me/${p.whatsapp}`} aria-label={`WhatsApp ${p.name}, ${p.whatsappDisplay}`}>
-              WhatsApp {p.name} · {p.whatsappDisplay}
+              WhatsApp {p.name}: {p.whatsappDisplay}
             </a>
           ))}
           <a href={`mailto:${site.email}`}>{site.email}</a>
           <a href={site.instagram.url} target="_blank" rel="noopener me">
-            Instagram · @{site.instagram.handle}
+            Instagram: @{site.instagram.handle}
           </a>
           {page === "home" ? (
             <a href={ROUTES[t.lang].expeditions}>{t.nav.expeditions}</a>

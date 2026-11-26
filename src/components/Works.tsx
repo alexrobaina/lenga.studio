@@ -4,7 +4,6 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import {
   AnimatePresence,
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
   type MotionValue,
@@ -17,6 +16,7 @@ import { Reveal, Title } from "./Reveal";
 import Bleed from "./Bleed";
 import { GALLERY, galleryPhotos } from "@/content/gallery";
 import type { Page } from "@/content/routes";
+import { useReduceMotion } from "@/lib/reducedMotion";
 
 const useIsoLayout = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
@@ -43,7 +43,7 @@ type StripCopy = { line1: string; line2: string; text: string };
 function Chalten({ t, copy, ids, skipTo, open }: { t: Dict; copy: StripCopy; ids: string[]; skipTo: string; open: (id: string) => void }) {
   const ref = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   const desktop = useMedia("(min-width: 900px)");
   const pinned = desktop && !reduce;
   const [dist, setDist] = useState(0);
@@ -66,7 +66,7 @@ function Chalten({ t, copy, ids, skipTo, open }: { t: Dict; copy: StripCopy; ids
   const x = useTransform(scrollYProgress, [0, 1], [0, -dist]);
   const intro = (cls: string) => (
     <div className={cls}>
-      <Title id="chalten-title" eyebrow={t.work.eyebrow} line1={copy.line1} line2={copy.line2} />
+      <Title id="chalten-title" line1={copy.line1} line2={copy.line2} />
       <p className="lead">{copy.text}</p>
       {pinned && (
         <p className="chalten-hint">
@@ -120,9 +120,9 @@ function Chalten({ t, copy, ids, skipTo, open }: { t: Dict; copy: StripCopy; ids
 
 function Column({ ids, progress, speed, t, open, offset }: { ids: string[]; progress: MotionValue<number>; speed: number; t: Dict; open: (id: string) => void; offset: number }) {
   const y = useTransform(progress, [0, 1], [offset, offset - speed]);
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   return (
-    <motion.div className="m-col" style={reduce ? undefined : { y }}>
+    <motion.div className="m-col" style={{ y: reduce ? 0 : y }}>
       {ids.map((id) => (
         <Reveal key={id} className="m-card">
           <button className="photo-btn" onClick={() => open(id)} aria-label={`${t.work.open}: ${t.photos[id]}`}>
@@ -180,7 +180,7 @@ function Soon({ t }: { t: Dict }) {
       <Reveal className="soon-band">
         <div>
           <p className="soon-title">
-            {t.work.soon.line1} <span className="accent">{t.work.soon.line2}</span>
+            {t.work.soon.line1} {t.work.soon.line2}
           </p>
           <p className="soon-text">{t.work.soon.text}</p>
         </div>

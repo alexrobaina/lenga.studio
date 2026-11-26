@@ -23,13 +23,10 @@ export default function Services({ t }: { t: Dict }) {
   return (
     <section id="paquetes" className="packages" aria-labelledby="packages-title">
       <div className="wrap">
-        <Title id="packages-title" eyebrow={p.eyebrow} line1={p.line1} line2={p.line2} />
+        <Title id="packages-title" line1={p.line1} line2={p.line2} />
         <div className="packages-grid">
           {p.items.map((it, i) => (
             <Reveal key={it.key} delay={(i % 2) * 0.08} className="package-card" as="article">
-              <span className="package-num" aria-hidden="true">
-                0{i + 1}
-              </span>
               <p className="package-for">
                 <span>{p.forLabel}</span> {it.for}
               </p>
@@ -42,9 +39,6 @@ export default function Services({ t }: { t: Dict }) {
               <div className="package-actions">
                 <a className="package-cta" href={whatsappHref(it.message)}>
                   {p.cta}
-                  <svg width="30" height="12" viewBox="0 0 38 12" aria-hidden="true">
-                    <path d="M1 6 H35 M30 1 L36 6 L30 11" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
                 </a>
                 {SAMPLES[it.key] && (
                   <a className="package-sample" href={SAMPLES[it.key]}>

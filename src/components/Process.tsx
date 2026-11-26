@@ -5,13 +5,13 @@ import {
   motion,
   useMotionValue,
   useMotionValueEvent,
-  useReducedMotion,
   useScroll,
   useSpring,
 } from "motion/react";
 import type { Dict } from "@/content/dictionaries";
 import DottedPath from "./DottedPath";
 import { Reveal, Title } from "./Reveal";
+import { useReduceMotion } from "@/lib/reducedMotion";
 
 type Geo = { w: number; h: number; d: string; stops: { x: number; y: number }[] };
 
@@ -20,7 +20,7 @@ export default function Process({ t }: { t: Dict }) {
   const box = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLLIElement | null)[]>([]);
   const pathRef = useRef<SVGPathElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   const [geo, setGeo] = useState<Geo | null>(null);
   const [reached, setReached] = useState(-1);
 
@@ -80,7 +80,7 @@ export default function Process({ t }: { t: Dict }) {
         <path filter="url(#torn)" d="M0 0 H1440 V14 L1330 24 L1210 12 L1090 26 L960 14 L840 28 L720 16 L600 27 L470 13 L350 25 L230 15 L110 26 L0 16 Z" fill="var(--crema)" />
       </svg>
       <div className="wrap">
-        <Title id="process-title" eyebrow={t.process.eyebrow} line1={t.process.line1} line2={t.process.line2} center />
+        <Title id="process-title" line1={t.process.line1} line2={t.process.line2} center />
         <div ref={box} className="process-box">
           {geo && (
             <svg className="process-trail" viewBox={`0 0 ${geo.w} ${geo.h}`} width={geo.w} height={geo.h} aria-hidden="true">

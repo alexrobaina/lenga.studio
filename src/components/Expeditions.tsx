@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import type { Dict } from "@/content/dictionaries";
 import { whatsappHref } from "@/content/site";
 import { STARS, Tent } from "./scenes/night";
@@ -9,10 +9,11 @@ import Art from "./Art";
 import Bleed from "./Bleed";
 import Picture from "./Picture";
 import { Reveal, Title } from "./Reveal";
+import { useReduceMotion } from "@/lib/reducedMotion";
 
 export default function Expeditions({ t }: { t: Dict }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   const { scrollYProgress: p } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const ySky = useTransform(p, [0, 1], ["-8%", "8%"]);
   const yMoon = useTransform(p, [0, 1], ["10%", "-14%"]);
@@ -24,7 +25,7 @@ export default function Expeditions({ t }: { t: Dict }) {
   const { scrollYProgress: pb } = useScroll({ target: body, offset: ["start end", "end start"] });
   const yShotA = useTransform(pb, [0, 1], ["24px", "-24px"]);
   const yShotB = useTransform(pb, [0, 1], ["48px", "-36px"]);
-  const s = (v: unknown) => (reduce ? undefined : ({ y: v } as never));
+  const s = (v: unknown) => ({ y: reduce ? 0 : v }) as never;
 
   return (
     <section id="expediciones" className="expeditions" aria-labelledby="exp-title">
@@ -63,7 +64,7 @@ export default function Expeditions({ t }: { t: Dict }) {
           <div className="night-extend" aria-hidden="true" />
         </motion.div>
         <div className="night-copy wrap">
-          <Title as="h1" id="exp-title" eyebrow={t.expeditions.eyebrow} line1={t.expeditions.line1} line2={t.expeditions.line2} light />
+          <Title as="h1" id="exp-title" eyebrow={t.expeditions.eyebrow} line1={t.expeditions.line1} line2={t.expeditions.line2} light accent />
         </div>
       </div>
       <div ref={body} className="exp-body">
@@ -84,7 +85,7 @@ export default function Expeditions({ t }: { t: Dict }) {
 
           <div className="exp-photos">
             {t.expeditions.shots.map((p, i) => (
-              <motion.figure key={p.id} className={`exp-shot exp-shot--${i}`} style={i === 0 || reduce ? undefined : { y: i === 1 ? yShotA : yShotB }}>
+              <motion.figure key={p.id} className={`exp-shot exp-shot--${i}`} style={i === 0 ? undefined : { y: reduce ? 0 : i === 1 ? yShotA : yShotB }}>
                 <Bleed className="exp-shot-img">
                   <Picture id={p.id} alt={p.caption} sizes={i === 0 ? "(min-width: 900px) 52vw, 100vw" : "(min-width: 900px) 26vw, 50vw"} />
                 </Bleed>

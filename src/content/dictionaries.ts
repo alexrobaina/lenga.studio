@@ -24,10 +24,9 @@ const es = {
     skip: "Saltar al contenido",
   },
   hero: {
-    eyebrow: "Fotografía · Diseño · Web · Redes — El Chaltén",
-    line1: "Fotógrafos de montaña en El Chaltén.",
-    line2: "También hacemos la web, el diseño y las redes de tu negocio.",
-    sub: "Mountain photographers in El Chaltén — and the website, design and social media for your business.",
+    line1: "Fotos, web y redes",
+    line2: "para negocios de montaña.",
+    sub: "Somos Alex y Agostina, fotógrafos de montaña. Esta temporada trabajamos en El Chaltén.",
     primary: "Escribinos por WhatsApp",
     secondary: "Ver trabajos",
     scroll: "Bajá despacio",
@@ -89,20 +88,20 @@ const es = {
   work: {
     eyebrow: "Trabajos",
     chalten: {
-      line1: "Fotografía de montaña\u00A0·",
-      line2: "El Chaltén",
+      line1: "Fotografía de montaña",
+      line2: "en El Chaltén",
       text: "El pueblo y su montaña con la luz real: el refugio, las nevadas y las agujas del Torre.",
       drag: "Seguí bajando para recorrer la serie",
       skip: "Saltar la galería",
     },
     food: {
-      line1: "Gastronomía\u00A0·",
-      line2: "Buenos Aires",
+      line1: "Gastronomía",
+      line2: "en Buenos Aires",
       text: "Platos para la carta y las redes de un bar: luz cálida, texturas y materiales que cuentan de dónde viene la comida.",
     },
     mendoza: {
-      line1: "Salidas fotográficas\u00A0·",
-      line2: "Mendoza",
+      line1: "Salidas fotográficas",
+      line2: "en Mendoza",
       text: "Salidas a la cordillera de Mendoza: travesías con nieve, retratos en la montaña, crestas al amanecer y cumbres.",
     },
     soon: {
@@ -161,8 +160,8 @@ const es = {
     },
     whatsappMessage: "Hola Lenga Studio, quiero consultar por la cobertura fotográfica de una salida.",
     chalten: {
-      line1: "En el glaciar\u00A0·",
-      line2: "El Chaltén",
+      line1: "En el glaciar,",
+      line2: "frente al Torre",
       text: "Campamento sobre el glaciar frente al Torre, cruces de río, nieve y tormenta: lo que vive el grupo, contado con fotos.",
     },
     aboutText:
@@ -205,7 +204,7 @@ const es = {
     illustrationLabel: "Ilustración en acuarela: refugio de madera con la ventana encendida entre lengas, al pie del Fitz Roy",
   },
   footer: {
-    place: "Mendoza · El Chaltén, Patagonia",
+    place: "Mendoza y El Chaltén, Patagonia",
     honest: "Fotografía real, sin imágenes generadas",
     rights: "Lenga Studio",
     top: "Volver arriba",
@@ -265,10 +264,9 @@ const en: Dict = {
     skip: "Skip to content",
   },
   hero: {
-    eyebrow: "Photography · Design · Web · Social — El Chaltén",
-    line1: "Mountain photographers in El Chaltén.",
-    line2: "We also make the website, design and social media for your business.",
-    sub: "Fotógrafos de montaña en El Chaltén — y la web, el diseño y las redes de tu negocio.",
+    line1: "Photos, websites and social media",
+    line2: "for mountain businesses.",
+    sub: "We're Alex and Agostina, mountain photographers. This season we're working in El Chaltén.",
     primary: "Message us on WhatsApp",
     secondary: "See our work",
     scroll: "Scroll slowly",
@@ -330,20 +328,20 @@ const en: Dict = {
   work: {
     eyebrow: "Work",
     chalten: {
-      line1: "Mountain photography\u00A0·",
-      line2: "El Chaltén",
+      line1: "Mountain photography",
+      line2: "in El Chaltén",
       text: "The village and its mountains in real light: the refugio, snowfall and the Torre spires.",
       drag: "Keep scrolling to walk the series",
       skip: "Skip the gallery",
     },
     food: {
-      line1: "Food\u00A0·",
-      line2: "Buenos Aires",
+      line1: "Food",
+      line2: "in Buenos Aires",
       text: "Dishes for a bar's menu and social media: warm light, textures and props that tell where the food comes from.",
     },
     mendoza: {
-      line1: "Photo trips\u00A0·",
-      line2: "Mendoza",
+      line1: "Photo trips",
+      line2: "in Mendoza",
       text: "Trips into the Mendoza Andes: snowy traverses, portraits in the mountains, ridges at dawn and summits.",
     },
     soon: {
@@ -401,8 +399,8 @@ const en: Dict = {
     },
     whatsappMessage: "Hi Lenga Studio, I'd like to ask about photo coverage for a trip.",
     chalten: {
-      line1: "On the glacier\u00A0·",
-      line2: "El Chaltén",
+      line1: "On the glacier,",
+      line2: "facing the Torre",
       text: "Camping on the glacier facing the Torre, river crossings, snow and storms: what the group lives, told in photos.",
     },
     aboutText:
@@ -444,7 +442,7 @@ const en: Dict = {
     illustrationLabel: "Watercolor illustration: a wooden mountain hut with a lit window among lenga trees, below Fitz Roy",
   },
   footer: {
-    place: "Mendoza · El Chaltén, Patagonia",
+    place: "Mendoza and El Chaltén, Patagonia",
     honest: "Real photography, no generated images",
     rights: "Lenga Studio",
     top: "Back to top",

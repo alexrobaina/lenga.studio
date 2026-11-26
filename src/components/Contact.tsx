@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import type { Dict } from "@/content/dictionaries";
 import { site, whatsappHref } from "@/content/site";
 import { rng, round } from "@/lib/rng";
@@ -9,6 +9,7 @@ import { Reveal, Title } from "./Reveal";
 import Art from "./Art";
 import Picture, { hasPhoto } from "./Picture";
 import { CHIMNEY, WINDOW } from "./scenes/refugio";
+import { useReduceMotion } from "@/lib/reducedMotion";
 
 const r = rng(77);
 const FLAKES = Array.from({ length: 36 }, () => ({
@@ -23,7 +24,7 @@ type ContactCopy = { line1: string; line2: string; text: string };
 
 export default function Contact({ t, copy = t.contact, message }: { t: Dict; copy?: ContactCopy; message: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReduceMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
   const yBack = useTransform(scrollYProgress, [0, 1], ["18%", "0%"]);
   const yMid = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
@@ -31,7 +32,7 @@ export default function Contact({ t, copy = t.contact, message }: { t: Dict; cop
   return (
     <section id="contacto" className="contact" aria-labelledby="contact-title">
       <div className="wrap contact-copy">
-        <Title id="contact-title" eyebrow={t.contact.eyebrow} line1={copy.line1} line2={copy.line2} center />
+        <Title id="contact-title" line1={copy.line1} line2={copy.line2} center />
         <Reveal>
           <p className="lead center">{copy.text}</p>
         </Reveal>
@@ -93,10 +94,10 @@ export default function Contact({ t, copy = t.contact, message }: { t: Dict; cop
             />
           ))}
         </div>
-        <motion.div className="refugio-layer" style={reduce ? undefined : { y: yBack }}>
+        <motion.div className="refugio-layer" style={{ y: reduce ? 0 : yBack }}>
           <Art id="refugio-back" />
         </motion.div>
-        <motion.div className="refugio-layer" style={reduce ? undefined : { y: yMid }}>
+        <motion.div className="refugio-layer" style={{ y: reduce ? 0 : yMid }}>
           <Art id="refugio-mid" />
           {/* Humo y luz de la ventana: lo único vivo, alineado con el refugio pintado. */}
           <svg className="refugio-live" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
