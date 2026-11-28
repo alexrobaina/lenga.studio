@@ -132,6 +132,20 @@ p { margin: 0 0 1em; max-width: 62ch; }
   .about__fig { order: -1; max-width: none; }
 }
 
+/* Publicidad: tira de fotos a la misma altura (grupos de a dos, que en escritorio van en una sola línea) */
+.ads { margin-top: clamp(48px, 7vw, 88px); }
+.ads h3 { margin-bottom: 6px; }
+.ads > p { color: var(--niebla); margin-bottom: 20px; }
+.strip { display: grid; gap: 12px; }
+.strip__group { display: flex; gap: 12px; align-items: flex-start; }
+.strip .shot { flex: var(--ar) 1 0; min-width: 0; }
+.strip .shot img { background: #c9cfd0; }
+.ads__more { display: inline-block; margin-top: 18px; font-weight: 600; text-underline-offset: 4px; padding: 6px 0; }
+@media (min-width: 760px) {
+  .strip { display: flex; gap: 16px; align-items: flex-start; }
+  .strip__group { flex: var(--ar) 1 0; min-width: 0; gap: 16px; }
+}
+
 /* Portfolio */
 .portfolio { padding-bottom: clamp(48px, 8vw, 104px); }
 .gallery { display: grid; gap: clamp(28px, 3vw, 40px); }
